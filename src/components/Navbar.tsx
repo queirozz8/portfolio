@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Moon, Sun } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Moon, Sun, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [isDark, setIsDark] = useState(true);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
@@ -29,6 +30,7 @@ const Navbar = () => {
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMobileOpen(false);
   };
 
   return (
@@ -43,9 +45,9 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-display text-xl font-bold tracking-tight text-foreground"
+          className="font-display text-xl font-bold tracking-tight text-foreground no-select"
         >
-          queirozz
+          queiro<span className="accent-gradient-text">zz</span>
         </button>
 
         <div className="hidden md:flex items-center gap-8">
@@ -53,28 +55,58 @@ const Navbar = () => {
             <button
               key={item}
               onClick={() => scrollTo(item)}
-              className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 uppercase tracking-widest"
+              className="font-body text-sm text-muted-foreground hover:text-accent transition-colors duration-200 uppercase tracking-widest no-select"
             >
               {t(`nav.${item}`)}
             </button>
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <button
             onClick={toggleLang}
-            className="font-display text-xs uppercase tracking-widest px-3 py-1 border border-border text-foreground hover:border-accent hover:text-accent transition-colors duration-200"
+            className="font-display text-xs uppercase tracking-widest px-3 py-1.5 border border-border text-foreground hover:border-accent hover:text-accent transition-all duration-200 rounded-md no-select"
           >
             {i18n.language === 'pt' ? 'EN' : 'PT'}
           </button>
           <button
             onClick={toggleTheme}
-            className="p-2 border border-border text-foreground hover:border-accent hover:text-accent transition-colors duration-200"
+            className="p-2 border border-border text-foreground hover:border-accent hover:text-accent transition-all duration-200 rounded-md"
           >
             {isDark ? <Sun size={16} /> : <Moon size={16} />}
           </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 border border-border text-foreground hover:border-accent transition-all duration-200 rounded-md"
+          >
+            {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-background/95 backdrop-blur-md border-b border-border overflow-hidden"
+          >
+            <div className="px-6 py-4 flex flex-col gap-3">
+              {['about', 'stack', 'experience', 'contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollTo(item)}
+                  className="font-body text-sm text-muted-foreground hover:text-accent transition-colors duration-200 uppercase tracking-widest text-left no-select"
+                >
+                  {t(`nav.${item}`)}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
