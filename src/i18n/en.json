@@ -14,10 +14,12 @@
   },
   "stack": {
     "title": "Stack",
+    "all": "All",
     "languages": "Languages & Core",
     "frontend": "Frontend",
     "backend": "Backend & Infra",
-    "tools": "Tools & Others"
+    "tools": "Tools & Others",
+    "technologies": "technologies"
   },
   "experience": {
     "title": "Experience",
@@ -34,7 +36,7 @@
       "description": "Built an automated WhatsApp Chatbot for a medical clinic as one of 3 developers. I owned the backend — the chatbot itself — using Node.js + TypeScript with whatsapp-web.js, node-notifier, and qrcode-terminal. The bot automated scheduling, viewing, and cancellation, cutting costs and improving service."
     },
     "pompeia": {
-      "company": "Pompeia Studio de Beleza (Freelance)",
+      "company": "Pompeia Studio de Beleza",
       "period": "Jun 2025 · 1 month",
       "description": "Built a Landing Page and WhatsApp Chatbot for a beauty salon. The Landing Page used Next.js + TypeScript + Tailwind CSS in a monorepo setup. The chatbot was an improved version of a previous project — added caching, push notifications via NTFY, and mobile alerts."
     },
@@ -67,7 +69,7 @@
     ]
   },
   "footer": {
-    "cta": "Let's build something.",
-    "rights": "© 2025 queirozz. All rights reserved."
+    "cta": "Let's build something?",
+    "rights": "© 2026 queirozz. All rights reserved."
   }
 }

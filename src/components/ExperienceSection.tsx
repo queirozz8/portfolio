@@ -1,12 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ExternalLink, Quote } from 'lucide-react';
+import vipHero from '@/assets/vip-hero.png';
+import pompeiaHero from '@/assets/pompeia-hero.png';
 
 interface ExperienceItem {
   key: string;
   tags: string[];
   website?: string;
   hasTestimonial?: boolean;
+  image?: string;
 }
 
 const experiences: ExperienceItem[] = [
@@ -14,6 +17,7 @@ const experiences: ExperienceItem[] = [
     key: 'vip',
     tags: ['React', 'TypeScript', 'ShadCN UI', 'cPanel', 'Frontend'],
     website: 'https://vipadm.com.br',
+    image: vipHero,
   },
   {
     key: 'frilic',
@@ -22,6 +26,8 @@ const experiences: ExperienceItem[] = [
   {
     key: 'pompeia',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Monorepo', 'WhatsApp Bot', 'NTFY'],
+    website: 'https://pompeia-studio.vercel.app',
+    image: pompeiaHero,
   },
   {
     key: 'vem',
@@ -41,7 +47,7 @@ const ExperienceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-display text-5xl md:text-7xl font-bold text-foreground mb-16"
+          className="font-display text-5xl md:text-7xl font-bold text-foreground mb-16 no-select"
         >
           {t('experience.title')}
         </motion.h2>
@@ -59,7 +65,7 @@ const ExperienceSection = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div className="lg:col-span-4">
                   <div className="flex items-start gap-2">
-                    <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-200">
+                    <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-200 no-select">
                       {t(`experience.${exp.key}.company`)}
                     </h3>
                     {exp.website && (
@@ -73,10 +79,10 @@ const ExperienceSection = () => {
                       </a>
                     )}
                   </div>
-                  <p className="font-body text-sm text-muted-foreground mt-1">
+                  <p className="font-body text-sm text-muted-foreground mt-1 no-select">
                     {t('experience.role_dev')}
                   </p>
-                  <p className="font-body text-xs text-muted-foreground mt-1 uppercase tracking-wider">
+                  <p className="font-body text-xs text-muted-foreground mt-1 uppercase tracking-wider no-select">
                     {t(`experience.${exp.key}.period`)} · {t('experience.remote')}
                   </p>
                 </div>
@@ -90,20 +96,44 @@ const ExperienceSection = () => {
                     {exp.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-body text-xs px-2 py-1 border border-border text-muted-foreground"
+                        className="font-body text-xs px-2 py-1 border border-border text-muted-foreground rounded-sm no-select"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
+                  {/* Project screenshot */}
+                  {exp.image && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2, duration: 0.5 }}
+                      className="mt-6 rounded-lg overflow-hidden border border-border group/img relative"
+                    >
+                      <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 z-10" />
+                      <img
+                        src={exp.image}
+                        alt={t(`experience.${exp.key}.company`)}
+                        className="w-full h-auto transition-transform duration-500 group-hover/img:scale-[1.02]"
+                      />
+                    </motion.div>
+                  )}
+
                   {exp.hasTestimonial && (
-                    <div className="mt-6 border-l-2 border-accent pl-4">
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3, duration: 0.4 }}
+                      className="mt-6 border-l-2 border-accent pl-4 bg-accent-soft rounded-r-md py-3 pr-3"
+                    >
                       <Quote size={14} className="text-accent mb-2" />
                       <p className="font-body text-sm italic text-foreground/70 leading-relaxed">
                         {t(`experience.${exp.key}.testimonial`)}
                       </p>
-                    </div>
+                    </motion.div>
                   )}
                 </div>
               </div>
