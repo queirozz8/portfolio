@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "about": "About",
+    "stack": "Stack",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Henrique Jorge de Queiroz",
+    "role": "Full-Stack Developer & Builder",
+    "bio": "15-year-old Full-Stack Developer from Santos, Brazil. I build AI-powered solutions, automate what can be automated, and ship products that actually work.",
+    "cta_work": "See my work",
+    "cta_contact": "Get in touch"
+  },
+  "stack": {
+    "title": "Stack",
+    "languages": "Languages & Core",
+    "frontend": "Frontend",
+    "backend": "Backend & Infra",
+    "tools": "Tools & Others"
+  },
+  "experience": {
+    "title": "Experience",
+    "remote": "Remote",
+    "role_dev": "Software Developer",
+    "vip": {
+      "company": "VIP Administradora de Bens e Condomínios",
+      "period": "Jan 2026 – Mar 2026 · 3 months",
+      "description": "Built the professional Landing Page for VIP, a property management company. Used React + TypeScript + ShadCN UI, and handled full deployment via cPanel including domain configuration."
+    },
+    "frilic": {
+      "company": "Frilic (Freelance)",
+      "period": "Aug 2025 – Oct 2025 · 3 months",
+      "description": "Built an automated WhatsApp Chatbot for a medical clinic as one of 3 developers. I owned the backend — the chatbot itself — using Node.js + TypeScript with whatsapp-web.js, node-notifier, and qrcode-terminal. The bot automated scheduling, viewing, and cancellation, cutting costs and improving service."
+    },
+    "pompeia": {
+      "company": "Pompeia Studio de Beleza (Freelance)",
+      "period": "Jun 2025 · 1 month",
+      "description": "Built a Landing Page and WhatsApp Chatbot for a beauty salon. The Landing Page used Next.js + TypeScript + Tailwind CSS in a monorepo setup. The chatbot was an improved version of a previous project — added caching, push notifications via NTFY, and mobile alerts."
+    },
+    "vem": {
+      "company": "Vem com a Gente - Agência de Viagens (Freelance)",
+      "period": "Jan 2025 · 1 month",
+      "description": "Built an automated WhatsApp Chatbot for a travel agency using Node.js with whatsapp-web.js, node-notifier, and qrcode-terminal. The bot automated support and sales, fully customizable per client needs.",
+      "testimonial": "I really want to thank you for the work you did. The bot turned out great, did exactly what I needed without any hassle. I saw how dedicated you were, testing everything, fixing bugs, and even pulling all-nighters to finish. It turned out really well and sped up my client service a lot. If anyone asks, I'll recommend you without thinking twice!"
+    }
+  },
+  "workStyle": {
+    "title": "How I work",
+    "items": [
+      {
+        "title": "Precision over speed",
+        "description": "I care more about building the right thing correctly than shipping fast and breaking it. Every decision is intentional."
+      },
+      {
+        "title": "Full ownership",
+        "description": "I don't just write code. I think about the product, the UX, the deployment, the domain. I take the whole thing seriously."
+      },
+      {
+        "title": "Communication first",
+        "description": "I keep clients informed. No ghosting, no surprises. Clear expectations, honest updates."
+      },
+      {
+        "title": "Continuous improvement",
+        "description": "Every project I ship is better than the last. I revisit, refactor, and learn from what I build."
+      }
+    ]
+  },
+  "footer": {
+    "cta": "Let's build something.",
+    "rights": "© 2025 queirozz. All rights reserved."
+  }
+}
