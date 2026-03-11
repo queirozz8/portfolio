@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "stack": "Stack",
+    "experience": "Experiência",
+    "contact": "Contato"
+  },
+  "hero": {
+    "subtitle": "Henrique Jorge de Queiroz",
+    "role": "Full-Stack Developer & Builder",
+    "bio": "Desenvolvedor Full-Stack de 15 anos de Santos, SP. Construo soluções com IA, automatizo o que pode ser automatizado e crio produtos que funcionam de verdade.",
+    "cta_work": "Ver meu trabalho",
+    "cta_contact": "Entre em contato"
+  },
+  "stack": {
+    "title": "Stack",
+    "languages": "Linguagens & Core",
+    "frontend": "Frontend",
+    "backend": "Backend & Infra",
+    "tools": "Ferramentas & Outros"
+  },
+  "experience": {
+    "title": "Experiência",
+    "remote": "Remoto",
+    "role_dev": "Software Developer",
+    "vip": {
+      "company": "VIP Administradora de Bens e Condomínios",
+      "period": "Jan 2026 – Mar 2026 · 3 meses",
+      "description": "Desenvolvi a Landing Page profissional da VIP, uma administradora de condomínios. Utilizei React + TypeScript + ShadCN UI e fui responsável pela hospedagem via cPanel, redirecionamento de domínios e entrega completa do produto."
+    },
+    "frilic": {
+      "company": "Frilic (Freelance)",
+      "period": "Ago 2025 – Out 2025 · 3 meses",
+      "description": "Desenvolvi um Chatbot automatizado para WhatsApp para uma clínica médica, como um dos 3 devs do projeto. Fui responsável pelo Backend — o próprio Chatbot — usando Node.js + TypeScript com whatsapp-web.js, node-notifier e qrcode-terminal. O bot automatizou agendamentos, visualização e cancelamento, reduzindo custos e melhorando o atendimento."
+    },
+    "pompeia": {
+      "company": "Pompeia Studio de Beleza (Freelance)",
+      "period": "Jun 2025 · 1 mês",
+      "description": "Desenvolvi uma Landing Page e um Chatbot para WhatsApp para um salão de beleza. A Landing Page usou Next.js + TypeScript + Tailwind CSS em monorepo. O Chatbot foi aprimorado com cache, notificações push via NTFY e integração com whatsapp-web.js."
+    },
+    "vem": {
+      "company": "Vem com a Gente - Agência de Viagens (Freelance)",
+      "period": "Jan 2025 · 1 mês",
+      "description": "Desenvolvi um Chatbot automatizado para WhatsApp para uma agência de viagens, usando Node.js com whatsapp-web.js, node-notifier e qrcode-terminal. O bot automatizou suporte e vendas, sendo totalmente customizável.",
+      "testimonial": "Queria te agradecer de verdade pelo trabalho que você fez. O bot ficou top, fez exatamente o que eu precisava e sem enrolação. Eu vi o quanto você se dedicou, testando tudo, corrigindo os erros e ainda virando a madrugada para terminar. Ficou muito bom e agilizou demais o meu atendimento com os clientes. Se alguém perguntar, vou recomendar sem pensar duas vezes!"
+    }
+  },
+  "workStyle": {
+    "title": "Como eu trabalho",
+    "items": [
+      {
+        "title": "Precisão acima de velocidade",
+        "description": "Me importo mais em construir a coisa certa corretamente do que entregar rápido e quebrar depois. Cada decisão é intencional."
+      },
+      {
+        "title": "Responsabilidade total",
+        "description": "Não apenas escrevo código. Penso no produto, na UX, no deploy, no domínio. Levo tudo a sério."
+      },
+      {
+        "title": "Comunicação primeiro",
+        "description": "Mantenho os clientes informados. Sem sumir, sem surpresas. Expectativas claras, atualizações honestas."
+      },
+      {
+        "title": "Melhoria contínua",
+        "description": "Cada projeto que entrego é melhor que o anterior. Revisito, refatoro e aprendo com o que construo."
+      }
+    ]
+  },
+  "footer": {
+    "cta": "Vamos construir algo.",
+    "rights": "© 2025 queirozz. Todos os direitos reservados."
+  }
+}
