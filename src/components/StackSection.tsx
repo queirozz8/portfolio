@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
 const stackData = {
-  languages: ['TypeScript', 'JavaScript', 'Node.js', 'HTML', 'CSS'],
-  frontend: ['React', 'Next.js', 'Tailwind CSS', 'ShadCN UI'],
-  backend: ['Node.js', 'REST APIs', 'cPanel', 'Domain Management'],
-  tools: ['Git', 'GitHub', 'WhatsApp Automation', 'NTFY', 'Monorepos', 'AI Tools'],
+  languages: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Python (básico)'],
+  frontend: ['Next.js', 'React.js', 'ShadCN UI', 'Tailwind CSS'],
+  backend: ['Express.js', 'Node.js', 'SQL & NoSQL', 'Supabase', 'n8n', 'Docker', 'cPanel'],
+  tools: ['AI Tools', 'Linux', 'Git', 'Inglês (nível B2)'],
 };
 
 const categoryColors: Record<string, string> = {

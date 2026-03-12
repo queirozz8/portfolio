@@ -3,6 +3,7 @@
     "about": "About",
     "stack": "Stack",
     "experience": "Experience",
+    "projects": "Projects",
     "contact": "Contact"
   },
   "hero": {
@@ -31,7 +32,7 @@
       "description": "Built the professional Landing Page for VIP, a property management company. Used React + TypeScript + ShadCN UI, and handled full deployment via cPanel including domain configuration."
     },
     "frilic": {
-      "company": "Frilic (Freelance)",
+      "company": "Frilic",
       "period": "Aug 2025 – Oct 2025 · 3 months",
       "description": "Built an automated WhatsApp Chatbot for a medical clinic as one of 3 developers. I owned the backend — the chatbot itself — using Node.js + TypeScript with whatsapp-web.js, node-notifier, and qrcode-terminal. The bot automated scheduling, viewing, and cancellation, cutting costs and improving service."
     },
@@ -41,10 +42,39 @@
       "description": "Built a Landing Page and WhatsApp Chatbot for a beauty salon. The Landing Page used Next.js + TypeScript + Tailwind CSS in a monorepo setup. The chatbot was an improved version of a previous project — added caching, push notifications via NTFY, and mobile alerts."
     },
     "vem": {
-      "company": "Vem com a Gente - Agência de Viagens (Freelance)",
+      "company": "Vem com a Gente - Agência de Viagens",
       "period": "Jan 2025 · 1 month",
       "description": "Built an automated WhatsApp Chatbot for a travel agency using Node.js with whatsapp-web.js, node-notifier, and qrcode-terminal. The bot automated support and sales, fully customizable per client needs.",
       "testimonial": "I really want to thank you for the work you did. The bot turned out great, did exactly what I needed without any hassle. I saw how dedicated you were, testing everything, fixing bugs, and even pulling all-nighters to finish. It turned out really well and sped up my client service a lot. If anyone asks, I'll recommend you without thinking twice!"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "notorium": {
+      "name": "Notorium (SaaS)",
+      "type": "Full-Stack Project",
+      "headline": "Your Instagram on autopilot.",
+      "description": "An AI-powered content automation platform for social media — built to plan, generate, and publish posts consistently. Although the project was discontinued, the complete system was built end-to-end (product, integrations, and infrastructure).",
+      "status": "Discontinued",
+      "stack": [
+        "Core: n8n",
+        "Frontend: Next.js + ShadCN UI + TypeScript",
+        "Backend: Express.js + TypeScript",
+        "WhatsApp Server: Express.js + JavaScript"
+      ]
+    },
+    "queirozzfm": {
+      "name": "queirozz.fm",
+      "type": "Frontend Project",
+      "headline": "A Spotify-inspired UI built from scratch.",
+      "description": "A UI/UX-focused project: a Spotify-inspired adaptation built from the ground up with careful layout, state handling, and responsive behavior.",
+      "status": "",
+      "stack": [
+        "React + TypeScript (Vite)",
+        "Tailwind CSS",
+        "Lucide-React",
+        "HTML"
+      ]
     }
   },
   "workStyle": {

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, Coffee } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -50,6 +50,17 @@ const Footer = () => {
             <Mail size={20} />
           </a>
         </motion.div>
+        
+        <div className="flex items-center justify-center mb-6">
+          <span className="font-body text-sm text-muted-foreground flex items-center gap-2 no-select">
+            Feito com
+            <Heart className="text-red-500 fill-red-500 w-5 h-5 -mt-0.5" />
+            e
+            <Coffee className="text-yellow-700 fill-yellow-400 w-5 h-5 -mt-0.5" />
+            por&nbsp;
+            <span className="font-medium text-foreground">queirozz.</span>
+          </span>
+        </div>
 
         <div className="section-divider mb-6" />
         <p className="font-body text-xs text-muted-foreground uppercase tracking-widest no-select">

@@ -3,12 +3,13 @@
     "about": "Sobre",
     "stack": "Stack",
     "experience": "Experiência",
+    "projects": "Projetos",
     "contact": "Contato"
   },
   "hero": {
     "subtitle": "Henrique Jorge de Queiroz",
     "role": "Full-Stack Developer & Builder",
-    "bio": "Desenvolvedor Full-Stack de 15 anos de Santos, SP. Construo soluções com IA, automatizo o que pode ser automatizado e crio produtos que funcionam de verdade.",
+    "bio": "Desenvolvedor Full-Stack de Santos, SP. Construo soluções com IA, automatizo o que pode ser automatizado e crio produtos que funcionam de verdade.",
     "cta_work": "Ver meu trabalho",
     "cta_contact": "Entre em contato"
   },
@@ -31,7 +32,7 @@
       "description": "Desenvolvi a Landing Page profissional da VIP, uma administradora de condomínios. Utilizei React + TypeScript + ShadCN UI e fui responsável pela hospedagem via cPanel, redirecionamento de domínios e entrega completa do produto."
     },
     "frilic": {
-      "company": "Frilic (Freelance)",
+      "company": "Frilic",
       "period": "Ago 2025 – Out 2025 · 3 meses",
       "description": "Desenvolvi um Chatbot automatizado para WhatsApp para uma clínica médica, como um dos 3 devs do projeto. Fui responsável pelo Backend — o próprio Chatbot — usando Node.js + TypeScript com whatsapp-web.js, node-notifier e qrcode-terminal. O bot automatizou agendamentos, visualização e cancelamento, reduzindo custos e melhorando o atendimento."
     },
@@ -41,10 +42,39 @@
       "description": "Desenvolvi uma Landing Page e um Chatbot para WhatsApp para um salão de beleza. A Landing Page usou Next.js + TypeScript + Tailwind CSS em monorepo. O Chatbot foi aprimorado com cache, notificações push via NTFY e integração com whatsapp-web.js."
     },
     "vem": {
-      "company": "Vem com a Gente - Agência de Viagens (Freelance)",
+      "company": "Vem com a Gente - Agência de Viagens",
       "period": "Jan 2025 · 1 mês",
       "description": "Desenvolvi um Chatbot automatizado para WhatsApp para uma agência de viagens, usando Node.js com whatsapp-web.js, node-notifier e qrcode-terminal. O bot automatizou suporte e vendas, sendo totalmente customizável.",
       "testimonial": "Queria te agradecer de verdade pelo trabalho que você fez. O bot ficou top, fez exatamente o que eu precisava e sem enrolação. Eu vi o quanto você se dedicou, testando tudo, corrigindo os erros e ainda virando a madrugada para terminar. Ficou muito bom e agilizou demais o meu atendimento com os clientes. Se alguém perguntar, vou recomendar sem pensar duas vezes!"
+    }
+  },
+  "projects": {
+    "title": "Principais Projetos",
+    "notorium": {
+      "name": "Notorium (SaaS)",
+      "type": "Projeto Full-Stack",
+      "headline": "Seu Instagram no piloto automático.",
+      "description": "Uma plataforma de automação de conteúdo para redes sociais com IA — feita para planejar, gerar e publicar posts com consistência. Embora o projeto tenha sido descontinuado, todo o sistema foi desenvolvido e entregue end‑to‑end (produto, integrações e infraestrutura).",
+      "status": "Descontinuado",
+      "stack": [
+        "Core: n8n",
+        "Frontend: Next.js + ShadCN UI + TypeScript",
+        "Backend: Express.js + TypeScript",
+        "WhatsApp Server: Express.js + JavaScript"
+      ]
+    },
+    "queirozzfm": {
+      "name": "queirozz.fm",
+      "type": "Projeto Front-end",
+      "headline": "Uma releitura do Spotify feita do zero, por mim.",
+      "description": "Um projeto focado em UI/UX e componentização: uma adaptação inspirada no Spotify, construída do zero com atenção a layout, estados e responsividade.",
+      "status": "",
+      "stack": [
+        "React + TypeScript (Vite)",
+        "Tailwind CSS",
+        "Lucide-React",
+        "HTML"
+      ]
     }
   },
   "workStyle": {

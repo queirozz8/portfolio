@@ -1,18 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ArrowDown, Mail, Sparkles } from 'lucide-react';
-import { useRef, useState } from 'react';
 import euImg from '@/assets/eu.png';
 
 const Hero = () => {
   const { t } = useTranslation();
-  const imgRef = useRef<HTMLDivElement>(null);
-  const [isScanning, setIsScanning] = useState(false);
-
-  const handleHoverStart = () => {
-    setIsScanning(true);
-    setTimeout(() => setIsScanning(false), 1500);
-  };
 
   return (
     <section id="about" className="min-h-screen flex items-center pt-16 relative overflow-hidden">
@@ -22,7 +14,7 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="section-divider mb-12" />
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           {/* Left: Text */}
           <div className="lg:col-span-7 space-y-6">
             <motion.div
@@ -41,11 +33,10 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
-              className="font-display text-[clamp(3.5rem,10vw,9rem)] font-bold leading-[0.9] tracking-tighter text-foreground cursor-default no-select"
-              onMouseEnter={handleHoverStart}
+              className="font-display text-[clamp(3.5rem,10vw,9rem)] font-bold leading-[0.9] tracking-tighter text-foreground no-select"
             >
               queiro
-              <span className="accent-gradient-text">zz</span>
+              <span className="accent-gradient-text">zz.</span>
             </motion.h1>
 
             <motion.p
@@ -79,39 +70,34 @@ const Hero = () => {
                 {t('hero.cta_work')}
                 <ArrowDown size={14} />
               </button>
-              <a
-                href="mailto:henriquejorge1365@gmail.com"
+              <button
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="font-body text-sm uppercase tracking-widest px-6 py-3 border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-300 flex items-center gap-2 rounded-md no-select"
               >
                 {t('hero.cta_contact')}
                 <Mail size={14} />
-              </a>
+              </button>
             </motion.div>
           </div>
 
           {/* Right: Portrait */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="lg:col-span-5 flex justify-end"
+            className="lg:col-span-5 flex justify-end lg:items-start"
           >
             <div
-              ref={imgRef}
-              className="relative overflow-hidden w-full max-w-[380px] aspect-[3/4] rounded-lg group"
-              onMouseEnter={handleHoverStart}
+              className="relative overflow-hidden w-full max-w-[320px] aspect-square rounded-full group lg:-mt-8"
             >
               {/* Accent border glow */}
-              <div className="absolute -inset-[1px] accent-gradient rounded-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute inset-[2px] bg-background rounded-lg overflow-hidden">
+              <div className="absolute -inset-[1px] accent-gradient rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-[2px] bg-background rounded-full overflow-hidden">
                 <img
                   src={euImg}
-                  alt="Henrique Jorge de Queiroz"
-                  className="w-full h-full object-cover portrait-grayscale"
+                  alt="Henrique Jorge de w"
+                  className="w-full h-full object-cover"
                 />
-                {isScanning && (
-                  <div className="absolute top-0 bottom-0 w-px bg-accent animate-scan-line pointer-events-none" />
-                )}
               </div>
             </div>
           </motion.div>

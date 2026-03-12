@@ -51,7 +51,7 @@ const Navbar = () => {
         </button>
 
         <div className="hidden md:flex items-center gap-8">
-          {['about', 'stack', 'experience', 'contact'].map((item) => (
+          {['about', 'stack', 'experience', 'projects', 'contact'].map((item) => (
             <button
               key={item}
               onClick={() => scrollTo(item)}
@@ -94,7 +94,7 @@ const Navbar = () => {
             className="md:hidden bg-background/95 backdrop-blur-md border-b border-border overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-3">
-              {['about', 'stack', 'experience', 'contact'].map((item) => (
+              {['about', 'stack', 'experience', 'projects', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollTo(item)}
