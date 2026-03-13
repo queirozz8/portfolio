@@ -16,13 +16,11 @@ const projects: ProjectItem[] = [
     key: 'notorium',
     tags: [
       'Full-Stack',
-      'n8n',
-      'Next.js',
-      'ShadCN UI',
-      'TypeScript',
-      'Express.js',
-      'WhatsApp Server',
-      'IA',
+      'Core: n8n',
+      'Frontend: Next.js + TypeScript + ShadCN UI',
+      'Backend: Express.js + TypeScript + whatsapp-web.js',
+      'WhatsApp Bot',
+      'AI',
     ],
     website: 'https://notorium-ai.vercel.app',
     image: notoriumImg,
@@ -30,12 +28,10 @@ const projects: ProjectItem[] = [
   {
     key: 'queirozzfm',
     tags: [
+      'Frontend',
       'React',
       'TypeScript',
-      'Vite',
       'Tailwind CSS',
-      'Lucide-React',
-      'HTML',
     ],
     website: 'https://queirozz-fm.vercel.app',
     image: queirozzfmImg,
@@ -105,7 +101,7 @@ const ProjectsSection = () => {
                       {t('stack.title')}
                     </p>
                     <ul className="space-y-1">
-                      {(t(`projects.${project.key}.stack`, { returnObjects: true }) as string[]).map((line) => (
+                      {project.tags.map((line) => (
                         <li key={line} className="flex gap-2 text-xs text-muted-foreground font-body">
                           <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-accent/70 flex-shrink-0" />
                           <span className="leading-relaxed">{line}</span>
@@ -129,17 +125,6 @@ const ProjectsSection = () => {
                   <p className="font-body text-sm text-foreground/80 leading-relaxed mt-4">
                     {t(`projects.${project.key}.description`)}
                   </p>
-
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-body text-xs px-2.5 py-1 border border-border bg-card/50 text-muted-foreground rounded-md no-select"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
 
                   {project.image && (
                     <motion.div

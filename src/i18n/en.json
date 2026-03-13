@@ -57,6 +57,7 @@
       "description": "An AI-powered content automation platform for social media — built to plan, generate, and publish posts consistently. Although the project was discontinued, the complete system was built end-to-end (product, integrations, and infrastructure).",
       "status": "Discontinued",
       "stack": [
+        "Full-Stack",
         "Core: n8n",
         "Frontend: Next.js + ShadCN UI + TypeScript",
         "Backend: Express.js + TypeScript",
@@ -70,6 +71,7 @@
       "description": "A UI/UX-focused project: a Spotify-inspired adaptation built from the ground up with careful layout, state handling, and responsive behavior.",
       "status": "",
       "stack": [
+        "Frontend",
         "React + TypeScript (Vite)",
         "Tailwind CSS",
         "Lucide-React",

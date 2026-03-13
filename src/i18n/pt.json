@@ -8,8 +8,8 @@
   },
   "hero": {
     "subtitle": "Henrique Jorge de Queiroz",
-    "role": "Full-Stack Developer & Builder",
-    "bio": "Desenvolvedor Full-Stack de Santos, SP. Construo soluções com IA, automatizo o que pode ser automatizado e crio produtos que funcionam de verdade.",
+    "role": "Full-Stack Developer & AI Builder",
+    "bio": "Construo sistemas, automatizo processos e crio produtos que resolvem problemas de verdade.",
     "cta_work": "Ver meu trabalho",
     "cta_contact": "Entre em contato"
   },
@@ -57,6 +57,7 @@
       "description": "Uma plataforma de automação de conteúdo para redes sociais com IA — feita para planejar, gerar e publicar posts com consistência. Embora o projeto tenha sido descontinuado, todo o sistema foi desenvolvido e entregue end‑to‑end (produto, integrações e infraestrutura).",
       "status": "Descontinuado",
       "stack": [
+        "Full-Stack",
         "Core: n8n",
         "Frontend: Next.js + ShadCN UI + TypeScript",
         "Backend: Express.js + TypeScript",
@@ -70,6 +71,7 @@
       "description": "Um projeto focado em UI/UX e componentização: uma adaptação inspirada no Spotify, construída do zero com atenção a layout, estados e responsividade.",
       "status": "",
       "stack": [
+        "Frontend",
         "React + TypeScript (Vite)",
         "Tailwind CSS",
         "Lucide-React",
@@ -86,7 +88,7 @@
       },
       {
         "title": "Responsabilidade total",
-        "description": "Não apenas escrevo código. Penso no produto, na UX, no deploy, no domínio. Levo tudo a sério."
+        "description": "Não escrevo apenas código. Penso no produto, na experiência do usuário e em tudo que faz um projeto realmente funcionar."
       },
       {
         "title": "Comunicação primeiro",

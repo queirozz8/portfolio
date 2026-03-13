@@ -15,23 +15,23 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     key: 'vip',
-    tags: ['React', 'TypeScript', 'ShadCN UI', 'cPanel', 'Frontend'],
+    tags: ['Frontend', 'React', 'TypeScript', 'ShadCN UI', 'cPanel'],
     website: 'https://vipadm.com.br',
     image: vipHero,
   },
   {
     key: 'frilic',
-    tags: ['Node.js', 'TypeScript', 'whatsapp-web.js', 'Backend', 'Automation'],
+    tags: ['Backend', 'Node.js', 'TypeScript', 'whatsapp-web.js', 'Automation'],
   },
   {
     key: 'pompeia',
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Monorepo', 'WhatsApp Bot', 'NTFY'],
+    tags: ['Frontend & WhatsApp Bot', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Monorepo', 'NTFY'],
     website: 'https://pompeia-studio.vercel.app',
     image: pompeiaHero,
   },
   {
     key: 'vem',
-    tags: ['Node.js', 'JavaScript', 'WhatsApp Bot', 'Automation'],
+    tags: ['Automation', 'Node.js', 'JavaScript', 'WhatsApp Bot'],
     hasTestimonial: true,
   },
 ];
@@ -156,12 +156,21 @@ const ExperienceSection = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.3, duration: 0.4 }}
-                      className="mt-6 border-l-2 border-accent pl-4 bg-accent-soft/50 rounded-r-lg py-3 pr-3"
+                      className="mt-6 border-l-2 border-accent pl-4 bg-accent-soft/50 rounded-r-lg py-3 pr-3 relative"
                     >
-                      <Quote size={14} className="text-accent mb-2" />
+                      <div className="flex items-center gap-2 mb-2">
+                        <Quote size={14} className="text-accent" />
+                        <span className="font-body text-xs font-medium text-foreground/80 no-select">
+                          Contratante
+                        </span>
+                      </div>
                       <p className="font-body text-sm italic text-foreground/70 leading-relaxed">
                         {t(`experience.${exp.key}.testimonial`)}
                       </p>
+                      <Quote
+                        size={14}
+                        className="text-accent/60 absolute bottom-2 right-2 rotate-180"
+                      />
                     </motion.div>
                   )}
                 </div>

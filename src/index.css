@@ -15,8 +15,9 @@
     --popover: 220 18% 10%;
     --popover-foreground: 220 15% 92%;
 
-    --primary: 220 15% 92%;
-    --primary-foreground: 220 18% 8%;
+    /* Principal: Tailwind indigo-600 e variantes */
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 16%;
     --secondary-foreground: 220 15% 92%;
@@ -24,12 +25,14 @@
     --muted: 220 14% 18%;
     --muted-foreground: 220 10% 60%;
 
-    --accent: 258 80% 68%;
+    --accent: 243 75% 59%;
     --accent-foreground: 0 0% 100%;
 
-    --accent-soft: 258 40% 20%;
+    --accent-soft: 243 58% 25%;
 
-    --glow: 215 90% 60%;
+    /* Cor secundária (stack frontend/tools, gradientes): azul para contrastar com indigo */
+    --glow: 217 75% 45%;
+
     --glow-foreground: 0 0% 100%;
 
     --destructive: 0 72% 45%;
@@ -37,18 +40,18 @@
 
     --border: 220 18% 22%;
     --input: 220 18% 22%;
-    --ring: 258 80% 68%;
+    --ring: 243 75% 59%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 220 18% 6%;
     --sidebar-foreground: 220 15% 92%;
-    --sidebar-primary: 220 15% 92%;
-    --sidebar-primary-foreground: 220 18% 6%;
-    --sidebar-accent: 220 14% 16%;
+    --sidebar-primary: 243 75% 59%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 243 58% 25%;
     --sidebar-accent-foreground: 220 15% 92%;
     --sidebar-border: 220 18% 22%;
-    --sidebar-ring: 258 80% 68%;
+    --sidebar-ring: 243 75% 59%;
 
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'IBM Plex Sans', sans-serif;
@@ -64,8 +67,8 @@
     --popover: 220 18% 9%;
     --popover-foreground: 220 15% 94%;
 
-    --primary: 220 15% 94%;
-    --primary-foreground: 220 18% 6%;
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 14%;
     --secondary-foreground: 220 15% 94%;
@@ -73,12 +76,12 @@
     --muted: 220 14% 16%;
     --muted-foreground: 220 10% 62%;
 
-    --accent: 258 80% 70%;
+    --accent: 243 75% 59%;
     --accent-foreground: 0 0% 100%;
 
-    --accent-soft: 258 40% 18%;
+    --accent-soft: 243 58% 22%;
 
-    --glow: 215 90% 62%;
+    --glow: 217 75% 40%;
     --glow-foreground: 0 0% 100%;
 
     --destructive: 0 72% 40%;
@@ -86,16 +89,16 @@
 
     --border: 220 18% 24%;
     --input: 220 18% 24%;
-    --ring: 258 80% 70%;
+    --ring: 243 75% 59%;
 
     --sidebar-background: 220 18% 4%;
     --sidebar-foreground: 220 15% 94%;
-    --sidebar-primary: 220 15% 94%;
-    --sidebar-primary-foreground: 220 18% 4%;
-    --sidebar-accent: 220 14% 14%;
+    --sidebar-primary: 243 75% 59%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 243 58% 22%;
     --sidebar-accent-foreground: 220 15% 94%;
     --sidebar-border: 220 18% 24%;
-    --sidebar-ring: 258 80% 70%;
+    --sidebar-ring: 243 75% 59%;
   }
 }
 
@@ -139,7 +142,8 @@
   }
 
   .accent-gradient-text {
-    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--glow)));
+    /* Gradiente só em tons de indigo, próximo ao indigo-600 */
+    background: linear-gradient(135deg, hsl(243 75% 59%), hsl(243 76% 67%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
