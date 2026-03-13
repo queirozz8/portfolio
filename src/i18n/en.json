@@ -8,8 +8,8 @@
   },
   "hero": {
     "subtitle": "Henrique Jorge de Queiroz",
-    "role": "Full-Stack Developer & Builder",
-    "bio": "15-year-old Full-Stack Developer from Santos, Brazil. I build AI-powered solutions, automate what can be automated, and ship products that actually work.",
+    "role": "Full-Stack Developer & AI Builder",
+    "bio": "I build systems, automate processes, and create products that solve real problems.",
     "cta_work": "See my work",
     "cta_contact": "Get in touch"
   },
@@ -29,7 +29,7 @@
     "vip": {
       "company": "VIP Administradora de Bens e Condomínios",
       "period": "Jan 2026 – Mar 2026 · 3 months",
-      "description": "Built the professional Landing Page for VIP, a property management company. Used React + TypeScript + ShadCN UI, and handled full deployment via cPanel including domain configuration."
+      "description": "Built the professional Landing Page for VIP, a property management company. Used React + TypeScript + ShadCN UI, and handled full deployment via cPanel including domain redirection and complete product delivery."
     },
     "frilic": {
       "company": "Frilic",
@@ -39,7 +39,7 @@
     "pompeia": {
       "company": "Pompeia Studio de Beleza",
       "period": "Jun 2025 · 1 month",
-      "description": "Built a Landing Page and WhatsApp Chatbot for a beauty salon. The Landing Page used Next.js + TypeScript + Tailwind CSS in a monorepo setup. The chatbot was an improved version of a previous project — added caching, push notifications via NTFY, and mobile alerts."
+      "description": "Built a Landing Page and WhatsApp Chatbot for a beauty salon. The Landing Page used Next.js + TypeScript + Tailwind CSS in a monorepo setup. The chatbot was an improved version of a previous project — added caching, push notifications via NTFY, and whatsapp-web.js integration."
     },
     "vem": {
       "company": "Vem com a Gente - Agência de Viagens",
@@ -84,11 +84,11 @@
     "items": [
       {
         "title": "Precision over speed",
-        "description": "I care more about building the right thing correctly than shipping fast and breaking it. Every decision is intentional."
+        "description": "I care more about building the right thing correctly than shipping fast and breaking it later. Every decision is intentional."
       },
       {
         "title": "Full ownership",
-        "description": "I don't just write code. I think about the product, the UX, the deployment, the domain. I take the whole thing seriously."
+        "description": "I don't just write code. I think about the product, the user experience, and everything that makes a project actually work."
       },
       {
         "title": "Communication first",
