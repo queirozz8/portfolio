@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isDark, setIsDark] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pendingScrollId = useRef<string | null>(null);
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
@@ -29,8 +30,19 @@ const Navbar = () => {
   };
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setMobileOpen(false);
+    if (mobileOpen) {
+      pendingScrollId.current = id;
+      setMobileOpen(false);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleExitComplete = () => {
+    if (pendingScrollId.current) {
+      document.getElementById(pendingScrollId.current)?.scrollIntoView({ behavior: 'smooth' });
+      pendingScrollId.current = null;
+    }
   };
 
   return (
@@ -84,8 +96,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={handleExitComplete}>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
