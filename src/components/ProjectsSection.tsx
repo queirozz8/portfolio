@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
 import notoriumImg from '@/assets/notorium.png';
 import queirozzfmImg from '@/assets/queirozzfm.png';
 
@@ -27,16 +28,134 @@ const projects: ProjectItem[] = [
   },
   {
     key: 'queirozzfm',
-    tags: [
-      'Frontend',
-      'React',
-      'TypeScript',
-      'Tailwind CSS',
-    ],
+    tags: ['Frontend', 'React', 'TypeScript', 'Tailwind CSS'],
     website: 'https://queirozz-fm.vercel.app',
     image: queirozzfmImg,
   },
 ];
+
+const TiltImage: React.FC<{
+  src: string;
+  alt: string;
+  link?: string;
+  intensity?: number;
+}> = ({ src, alt, link, intensity = 8 }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  const targetRef = useRef({ x: 0, y: 0 });
+  const currentRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
+  const [isHover, setIsHover] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
+
+  const applyTransforms = () => {
+    const el = containerRef.current;
+    const img = imgRef.current;
+    if (!el) return;
+
+    const ease = 0.14;
+
+    currentRef.current.x = lerp(currentRef.current.x, targetRef.current.x, ease);
+    currentRef.current.y = lerp(currentRef.current.y, targetRef.current.y, ease);
+
+    const rotX = currentRef.current.x;
+    const rotY = currentRef.current.y;
+
+    el.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${isHover ? 1.02 : 1})`;
+
+    if (img) {
+      const imgTranslateX = rotY * 0.18;
+      const imgTranslateY = rotX * -0.18;
+      img.style.transform = `translate3d(${imgTranslateX}px, ${imgTranslateY}px, 0) scale(${isHover ? 1.01 : 1})`;
+    }
+
+    rafRef.current = requestAnimationFrame(() => applyTransforms());
+  };
+
+  const handleMove = (e: React.MouseEvent) => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width; // 0..1
+    const py = (e.clientY - rect.top) / rect.height; // 0..1
+
+    const nx = px - 0.5;
+    const ny = py - 0.5;
+
+    // <-- DESINVERTIDO: agora nx direto, ny invertido (intuitivo)
+    targetRef.current.y = nx * intensity; // rotateY (move pra direita => inclina pra direita)
+    targetRef.current.x = -ny * intensity; // rotateX (move pra baixo => inclina pra frente)
+
+    if (!rafRef.current) {
+      rafRef.current = requestAnimationFrame(() => applyTransforms());
+    }
+  };
+
+  const handleEnter = () => {
+    setIsHover(true);
+    targetRef.current.x = currentRef.current.x;
+    targetRef.current.y = currentRef.current.y;
+    if (!rafRef.current) rafRef.current = requestAnimationFrame(() => applyTransforms());
+  };
+
+  const handleLeave = () => {
+    setIsHover(false);
+    targetRef.current.x = 0;
+    targetRef.current.y = 0;
+  };
+
+  const content = (
+    <div
+      className="relative rounded-lg overflow-hidden"
+      onMouseMove={handleMove}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      ref={containerRef}
+      style={{
+        transition: 'box-shadow 300ms',
+        willChange: 'transform',
+      }}
+    >
+      {/* overlay sutil */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-accent/5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" />
+
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        className="relative z-20 w-full h-auto block transition-transform duration-300 will-change-transform"
+        loading="lazy"
+        style={{
+          transform: 'translate3d(0,0,0)',
+        }}
+      />
+    </div>
+  );
+
+  if (link) {
+    return (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset rounded-lg"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return content;
+};
 
 const ProjectsSection = () => {
   const { t } = useTranslation();
@@ -90,16 +209,11 @@ const ProjectsSection = () => {
                     {t(`projects.${project.key}.type`)}
                   </p>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 6 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.15, duration: 0.4 }}
-                    className="mt-4 border border-border bg-card/40 rounded-md p-3"
-                  >
+                  <div className="mt-4 border border-border bg-card/40 rounded-md p-3">
                     <p className="font-body text-[10px] uppercase tracking-[0.25em] text-muted-foreground no-select mb-2">
                       {t('stack.title')}
                     </p>
+
                     <ul className="space-y-1">
                       {project.tags.map((line) => (
                         <li key={line} className="flex gap-2 text-xs text-muted-foreground font-body">
@@ -108,13 +222,7 @@ const ProjectsSection = () => {
                         </li>
                       ))}
                     </ul>
-                  </motion.div>
-
-                  {t(`projects.${project.key}.status`, { defaultValue: '' }) ? (
-                    <p className="font-body text-xs text-muted-foreground mt-1 uppercase tracking-wider no-select">
-                      {t(`projects.${project.key}.status`)}
-                    </p>
-                  ) : null}
+                  </div>
                 </div>
 
                 <div className="lg:col-span-8">
@@ -134,32 +242,7 @@ const ProjectsSection = () => {
                       transition={{ delay: 0.2, duration: 0.5 }}
                       className="mt-6 rounded-lg overflow-hidden border border-border group/img relative"
                     >
-                      {project.website ? (
-                        <a
-                          href={project.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset rounded-lg"
-                        >
-                          <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 z-10" />
-                          <img
-                            src={project.image}
-                            alt={t(`projects.${project.key}.name`)}
-                            className="w-full h-auto transition-transform duration-500 group-hover/img:scale-[1.02]"
-                            loading="lazy"
-                          />
-                        </a>
-                      ) : (
-                        <>
-                          <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 z-10" />
-                          <img
-                            src={project.image}
-                            alt={t(`projects.${project.key}.name`)}
-                            className="w-full h-auto transition-transform duration-500 group-hover/img:scale-[1.02]"
-                            loading="lazy"
-                          />
-                        </>
-                      )}
+                      <TiltImage src={project.image} alt={t(`projects.${project.key}.name`)} link={project.website} />
                     </motion.div>
                   )}
                 </div>
@@ -175,4 +258,3 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
-

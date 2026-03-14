@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ExternalLink, Quote } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
 import vipHero from '@/assets/vip-hero.png';
 import pompeiaHero from '@/assets/pompeia-hero.png';
 
@@ -35,6 +36,123 @@ const experiences: ExperienceItem[] = [
     hasTestimonial: true,
   },
 ];
+
+const TiltImage: React.FC<{
+  src: string;
+  alt: string;
+  link?: string;
+  intensity?: number;
+}> = ({ src, alt, link, intensity = 7 }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  const targetRef = useRef({ x: 0, y: 0 });
+  const currentRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
+  const [isHover, setIsHover] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
+
+  const applyTransforms = () => {
+    const el = containerRef.current;
+    const img = imgRef.current;
+    if (!el) return;
+
+    const ease = 0.14;
+
+    currentRef.current.x = lerp(currentRef.current.x, targetRef.current.x, ease);
+    currentRef.current.y = lerp(currentRef.current.y, targetRef.current.y, ease);
+
+    const rotX = currentRef.current.x;
+    const rotY = currentRef.current.y;
+
+    el.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${isHover ? 1.015 : 1})`;
+
+    if (img) {
+      const imgTranslateX = rotY * 0.16;
+      const imgTranslateY = rotX * -0.16;
+      img.style.transform = `translate3d(${imgTranslateX}px, ${imgTranslateY}px, 0) scale(${isHover ? 1.008 : 1})`;
+    }
+
+    rafRef.current = requestAnimationFrame(() => applyTransforms());
+  };
+
+  const handleMove = (e: React.MouseEvent) => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+
+    const nx = px - 0.5;
+    const ny = py - 0.5;
+
+    // DESINVERTIDO: comport. intuitivo
+    targetRef.current.y = nx * intensity;
+    targetRef.current.x = -ny * intensity;
+
+    if (!rafRef.current) rafRef.current = requestAnimationFrame(() => applyTransforms());
+  };
+
+  const handleEnter = () => {
+    setIsHover(true);
+    targetRef.current.x = currentRef.current.x;
+    targetRef.current.y = currentRef.current.y;
+    if (!rafRef.current) rafRef.current = requestAnimationFrame(() => applyTransforms());
+  };
+
+  const handleLeave = () => {
+    setIsHover(false);
+    targetRef.current.x = 0;
+    targetRef.current.y = 0;
+  };
+
+  const content = (
+    <div
+      className="relative rounded-lg overflow-hidden"
+      onMouseMove={handleMove}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      ref={containerRef}
+      style={{
+        transition: 'box-shadow 300ms',
+        willChange: 'transform',
+      }}
+    >
+      <div className="absolute inset-0 z-10 pointer-events-none bg-accent/5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" />
+
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        className="relative z-20 w-full h-auto block transition-transform duration-300 will-change-transform"
+        loading="lazy"
+        style={{ transform: 'translate3d(0,0,0)' }}
+      />
+    </div>
+  );
+
+  if (link) {
+    return (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset rounded-lg"
+      >
+        {content}
+      </a>
+    );
+  }
+  return content;
+};
 
 const ExperienceSection = () => {
   const { t } = useTranslation();
@@ -114,7 +232,6 @@ const ExperienceSection = () => {
                     {t(`experience.${exp.key}.description`)}
                   </p>
 
-                  {/* Project screenshot */}
                   {exp.image && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -123,30 +240,7 @@ const ExperienceSection = () => {
                       transition={{ delay: 0.2, duration: 0.5 }}
                       className="mt-6 rounded-lg overflow-hidden border border-border group/img relative"
                     >
-                      {exp.website ? (
-                        <a
-                          href={exp.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset rounded-lg"
-                        >
-                          <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 z-10" />
-                          <img
-                            src={exp.image}
-                            alt={t(`experience.${exp.key}.company`)}
-                            className="w-full h-auto transition-transform duration-500 group-hover/img:scale-[1.02]"
-                          />
-                        </a>
-                      ) : (
-                        <>
-                          <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 z-10" />
-                          <img
-                            src={exp.image}
-                            alt={t(`experience.${exp.key}.company`)}
-                            className="w-full h-auto transition-transform duration-500 group-hover/img:scale-[1.02]"
-                          />
-                        </>
-                      )}
+                      <TiltImage src={exp.image} alt={t(`experience.${exp.key}.company`)} link={exp.website} />
                     </motion.div>
                   )}
 
@@ -160,17 +254,12 @@ const ExperienceSection = () => {
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <Quote size={14} className="text-accent" />
-                        <span className="font-body text-xs font-medium text-foreground/80 no-select">
-                          Contratante
-                        </span>
+                        <span className="font-body text-xs font-medium text-foreground/80 no-select">Contratante</span>
                       </div>
                       <p className="font-body text-sm italic text-foreground/70 leading-relaxed">
                         {t(`experience.${exp.key}.testimonial`)}
                       </p>
-                      <Quote
-                        size={14}
-                        className="text-accent/60 absolute bottom-2 right-2 rotate-180"
-                      />
+                      <Quote size={14} className="text-accent/60 absolute bottom-2 right-2 rotate-180" />
                     </motion.div>
                   )}
                 </div>
