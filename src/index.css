@@ -164,3 +164,133 @@
     filter: grayscale(0%) contrast(1);
   }
 }
+
+/* =============================================================================
+   CUSTOM CURSOR
+   
+   Todo o bloco está dentro de @media (pointer: fine).
+   
+   "pointer: fine" = dispositivo de apontamento com alta precisão (mouse,
+   trackpad). "pointer: coarse" = baixa precisão (dedo em touchscreen).
+   
+   O browser ignora completamente tudo dentro deste @media em celulares
+   e tablets — o cursor nativo não é escondido e as classes .cursor-dot
+   e .cursor-ring não são carregadas, como se não existissem.
+   ============================================================================= */
+
+@media (pointer: fine) {
+
+  /* Esconde o cursor nativo do SO em absolutamente todos os elementos.
+     O !important é necessário para sobrescrever regras de libs de UI
+     (ShadcnUI, Radix, etc.) que definem cursor: pointer em componentes
+     e têm especificidade suficiente para ganhar sem o !important. */
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+
+  /* ── Ponto central ─────────────────────────────────────────────────────── */
+  .cursor-dot {
+    /* Fixo ao viewport: não rola com a página, sempre visível na tela. */
+    position: fixed;
+
+    /* Âncora no canto superior esquerdo. O posicionamento real é feito
+       pelo transform no JS — top/left servem apenas como ponto de origem. */
+    top: 0;
+    left: 0;
+
+    /* Tamanho padrão do ponto. */
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%; /* círculo perfeito */
+
+    /* Usa a variável --primary do tema, que muda automaticamente entre
+       claro e escuro sem nenhuma lógica adicional. */
+    background-color: hsl(var(--primary));
+
+    /* Não bloqueia eventos de clique nem hover da página por baixo. */
+    pointer-events: none;
+
+    /* Fica acima de modais, dropdowns e tooltips. */
+    z-index: 99999;
+
+    /* Começa invisível — fica visível no primeiro mousemove via JS
+       (dot.style.opacity = "1" no handleMouseEnter). */
+    opacity: 0;
+
+    /* Transition APENAS em width, height e opacity.
+       O transform NÃO pode ter transition porque é controlado frame
+       a frame pelo rAF no JS — adicionar transition aqui criaria
+       um segundo sistema de interpolação conflitando com o lerp,
+       causando movimento "duplo" e descoordenado. */
+    transition:
+      width 0.2s ease,
+      height 0.2s ease,
+      opacity 0.3s ease;
+
+    /* Avisa a GPU para preparar uma camada dedicada para este elemento,
+       pois seu transform vai mudar constantemente. Evita repaints. */
+    will-change: transform;
+  }
+
+  /* Quando o mouse está sobre um elemento clicável, o ponto cresce.
+     Essa classe é adicionada/removida pelo JS no handleMouseOver/Out. */
+  .cursor-dot--hover {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* ── Anel com delay ────────────────────────────────────────────────────── */
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    /* Maior que o dot para criar o efeito de "moldura" ao redor. */
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    /* Borda semitransparente na cor primária do tema.
+       A sintaxe "hsl(var() / 0.55)" é CSS moderno para aplicar opacidade
+       diretamente na cor sem precisar de rgba. */
+    border: 1.5px solid hsl(var(--primary) / 0.55);
+
+    pointer-events: none;
+
+    /* Um nível abaixo do dot para o ponto aparecer "na frente" do anel. */
+    z-index: 99998;
+
+    opacity: 0;
+
+    /* Aqui SIM usamos transition em tudo — o anel não precisa de
+       movimento instantâneo, então podemos animar suavemente as
+       mudanças de tamanho e cor no estado hover.
+       O transform continua sendo controlado pelo rAF (sem transition). */
+    transition:
+      width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      opacity 0.3s ease;
+
+    will-change: transform;
+  }
+
+  /* Estado hover do anel: expande e ganha um fill sutil tipo "spotlight". */
+  .cursor-ring--hover {
+    width: 50px;
+    height: 50px;
+
+    /* Borda mais fraca — o tamanho maior já chama atenção. */
+    border-color: hsl(var(--primary) / 0.35);
+
+    /* Fill levíssimo de 6% de opacidade. Cria sensação de área de foco
+       sem poluir visualmente. */
+    background-color: hsl(var(--primary) / 0.06);
+  }
+
+}
