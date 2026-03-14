@@ -123,7 +123,7 @@ const Hero = () => {
               dar espaço aos elementos que ficam "fora"
               dos limites da imagem circular.
             */}
-            <div className="relative w-full max-w-[320px] aspect-square group" style={{ padding: '2rem' }}>
+            <div className="relative w-full max-w-[220px] sm:max-w-[320px] aspect-square group" style={{ padding: '2rem' }}>
 
               {/* ── Anel externo girante ──────────────────
                   Um SVG de círculo tracejado que gira
