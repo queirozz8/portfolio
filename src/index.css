@@ -5,58 +5,63 @@
 @tailwind utilities;
 
 @layer base {
+  /* =============================================
+     :root = TEMA CLARO (padrão, sem classe .dark)
+     ============================================= */
   :root {
-    --background: 220 18% 6%;
-    --foreground: 220 15% 92%;
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 220 15% 92%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 220 15% 92%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
 
-    /* Principal: Tailwind indigo-600 e variantes */
     --primary: 243 75% 59%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 16%;
-    --secondary-foreground: 220 15% 92%;
+    --secondary: 220 14% 90%;
+    --secondary-foreground: 220 20% 10%;
 
-    --muted: 220 14% 18%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 10% 45%;
 
     --accent: 243 75% 59%;
     --accent-foreground: 0 0% 100%;
 
-    --accent-soft: 243 58% 25%;
+    /* Versão suave do accent para fundos (ex: badges, hovers) */
+    --accent-soft: 243 58% 92%;
 
-    /* Cor secundária (stack frontend/tools, gradientes): azul para contrastar com indigo */
+    /* Cor secundária para gradientes */
     --glow: 217 75% 45%;
-
     --glow-foreground: 0 0% 100%;
 
     --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 18% 22%;
-    --input: 220 18% 22%;
+    --border: 220 18% 82%;
+    --input: 220 18% 82%;
     --ring: 243 75% 59%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 220 18% 6%;
-    --sidebar-foreground: 220 15% 92%;
+    --sidebar-background: 220 20% 97%;
+    --sidebar-foreground: 220 20% 10%;
     --sidebar-primary: 243 75% 59%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 243 58% 25%;
-    --sidebar-accent-foreground: 220 15% 92%;
-    --sidebar-border: 220 18% 22%;
+    --sidebar-accent: 243 58% 92%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 220 18% 82%;
     --sidebar-ring: 243 75% 59%;
 
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'IBM Plex Sans', sans-serif;
   }
 
+  /* =============================================
+     .dark = TEMA ESCURO (aplicado via JS no <html>)
+     ============================================= */
   .dark {
     --background: 220 18% 4%;
     --foreground: 220 15% 94%;
@@ -142,7 +147,6 @@
   }
 
   .accent-gradient-text {
-    /* Gradiente só em tons de indigo, próximo ao indigo-600 */
     background: linear-gradient(135deg, hsl(243 75% 59%), hsl(243 76% 67%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
