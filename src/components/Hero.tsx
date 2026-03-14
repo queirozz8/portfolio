@@ -3,11 +3,6 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Mail, Sparkles } from 'lucide-react';
 import euImg from '@/assets/eu.png';
 
-// ─────────────────────────────────────────────
-// Dados dos chips flutuantes ao redor da imagem.
-// Cada chip tem: texto, posição (top/left em %),
-// e um delay de animação individual.
-// ─────────────────────────────────────────────
 const floatingChips = [
   { label: 'TypeScript',  top: '2%',   left: '-18%', delay: 0.0 },
   { label: 'React',       top: '22%',  left: '-22%', delay: 0.05 },
@@ -18,11 +13,6 @@ const floatingChips = [
   { label: 'Tailwind',    top: '75%',  left: '85%',  delay: 0.0 },
 ];
 
-// ─────────────────────────────────────────────
-// Dados dos dots decorativos.
-// São pequenos pontos posicionados ao redor da
-// imagem que pulsam/escalam no hover.
-// ─────────────────────────────────────────────
 const decorativeDots = [
   { top: '-5%',  left: '50%',  size: 6,  delay: 0.0 },
   { top: '50%',  left: '-5%',  size: 8,  delay: 0.1 },
@@ -37,7 +27,6 @@ const Hero = () => {
 
   return (
     <section id="about" className="min-h-screen flex items-center pt-16 relative overflow-hidden">
-      {/* Background decorative blur blobs */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-glow/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -116,190 +105,160 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="
-              lg:col-span-5
-              flex
-              justify-center lg:justify-end
-              items-center lg:items-start
-              mt-6 lg:mt-0
-            "
+            className="lg:col-span-5 flex justify-center lg:justify-end lg:items-start"
           >
             {/*
-              Wrapper relativo com padding responsivo e tamanho
-              menor no mobile para manter proporção visual.
+              Sizing shell: reserva o espaço correto no layout.
+              220×220 no mobile, 320×320 no sm+.
             */}
-            <div
-              className="
-                relative
-                w-full
-                max-w-[220px]
-                sm:max-w-[260px]
-                md:max-w-[280px]
-                lg:max-w-[320px]
-                aspect-square
-                group
-                p-5
-                sm:p-6
-                lg:p-8
-              "
-            >
+            <div className="relative flex-shrink-0 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px]">
 
-              {/* ── Anel externo girante ────────────────── */}
-              <motion.svg
-                className="absolute inset-0 w-full h-full pointer-events-none"
-                viewBox="0 0 100 100"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-                whileHover={{ transition: { duration: 3, repeat: Infinity, ease: 'linear' } }}
+              {/*
+                Scale wrapper: sempre 320×320 fisicamente,
+                mas escalado para 68.75% no mobile (320 × 0.6875 = 220).
+                origin-top-left ancora o scale no canto correto,
+                garantindo que caiba exatamente no sizing shell.
+                TODO o conteúdo interno escala junto, proporcionalmente.
+              */}
+              <div
+                className="absolute top-0 left-0 origin-top-left scale-[0.6875] sm:scale-100"
+                style={{ width: '320px', height: '320px' }}
               >
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="48"
-                  fill="none"
-                  stroke="hsl(var(--accent) / 0.3)"
-                  strokeWidth="0.5"
-                  strokeDasharray="4 3"
-                  strokeLinecap="round"
-                />
-              </motion.svg>
 
-              {/* ── Anel interno contra-girante ─────────── */}
-              <motion.svg
-                className="absolute pointer-events-none"
-                style={{ inset: '1.2rem' }}
-                viewBox="0 0 100 100"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              >
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="47"
-                  fill="none"
-                  stroke="hsl(var(--accent) / 0.12)"
-                  strokeWidth="0.4"
-                  strokeDasharray="1 6"
-                  strokeLinecap="round"
-                />
-              </motion.svg>
+                {/* Conteúdo original 100% intacto abaixo */}
+                <div className="relative w-full h-full group" style={{ padding: '2rem' }}>
 
-              {/* ── Chips flutuantes ───────────────────── */}
-              {floatingChips.map((chip) => (
-                <motion.div
-                  key={chip.label}
-                  className="absolute pointer-events-none"
-                  style={{ top: chip.top, left: chip.left }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  variants={{
-                    idle: { opacity: 0, scale: 0.8, y: 4 },
-                    hover: { opacity: 1, scale: 1, y: 0 },
-                  }}
-                  transition={{ delay: chip.delay, duration: 0.25, ease: 'easeOut' }}
-                >
-                  <span
-                    className="
-                      font-mono
-                      text-[9px] sm:text-[10px]
-                      tracking-wider
-                      px-2 py-1
-                      rounded-full
-                      bg-background/90
-                      backdrop-blur-sm
-                      border border-accent/30
-                      text-accent/80
-                      whitespace-nowrap
-                      shadow-sm
-                    "
+                  <motion.svg
+                    className="absolute inset-0 w-full h-full pointer-events-none"
+                    viewBox="0 0 100 100"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+                    whileHover={{ transition: { duration: 3, repeat: Infinity, ease: 'linear' } }}
                   >
-                    {chip.label}
-                  </span>
-                </motion.div>
-              ))}
+                    <circle
+                      cx="50" cy="50" r="48"
+                      fill="none"
+                      stroke="hsl(var(--accent) / 0.3)"
+                      strokeWidth="0.5"
+                      strokeDasharray="4 3"
+                      strokeLinecap="round"
+                    />
+                  </motion.svg>
 
-              {/* ── Dots decorativos ───────────────────── */}
-              {decorativeDots.map((dot, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute rounded-full bg-accent pointer-events-none"
-                  style={{
-                    top: dot.top,
-                    left: dot.left,
-                    width: dot.size,
-                    height: dot.size,
-                    transform: 'translate(-50%, -50%)',
-                  }}
-                  variants={{
-                    idle: { opacity: 0.15, scale: 0.6 },
-                    hover: { opacity: 0.8, scale: 1.4 },
-                  }}
-                  transition={{ delay: dot.delay, duration: 0.3, ease: 'easeOut' }}
-                />
-              ))}
+                  <motion.svg
+                    className="absolute pointer-events-none"
+                    style={{ inset: '1.2rem' }}
+                    viewBox="0 0 100 100"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                  >
+                    <circle
+                      cx="50" cy="50" r="47"
+                      fill="none"
+                      stroke="hsl(var(--accent) / 0.12)"
+                      strokeWidth="0.4"
+                      strokeDasharray="1 6"
+                      strokeLinecap="round"
+                    />
+                  </motion.svg>
 
-              {/* ── Badge Available ────────────────────── */}
-              <motion.div
-                className="absolute bottom-[1.5rem] left-[-0.5rem] pointer-events-none"
-                variants={{
-                  idle: { opacity: 0, x: -8 },
-                  hover: { opacity: 1, x: 0 },
-                }}
-                transition={{ delay: 0.1, duration: 0.3, ease: 'easeOut' }}
-              >
-                <div
-                  className="
-                    flex items-center gap-1.5
-                    font-mono text-[9px] sm:text-[10px]
-                    tracking-wider
-                    px-2.5 py-1.5
-                    rounded-full
-                    bg-background/95
-                    backdrop-blur-sm
-                    border border-border
-                    text-muted-foreground
-                    shadow-md
-                    whitespace-nowrap
-                  "
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-                  </span>
-                  available
+                  {floatingChips.map((chip) => (
+                    <motion.div
+                      key={chip.label}
+                      className="absolute pointer-events-none"
+                      style={{ top: chip.top, left: chip.left }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      variants={{
+                        idle:  { opacity: 0, scale: 0.8, y: 4 },
+                        hover: { opacity: 1, scale: 1,   y: 0 },
+                      }}
+                      transition={{ delay: chip.delay, duration: 0.25, ease: 'easeOut' }}
+                    >
+                      <span className="
+                        font-mono text-[10px] tracking-wider
+                        px-2 py-1 rounded-full
+                        bg-background/90 backdrop-blur-sm
+                        border border-accent/30
+                        text-accent/80
+                        whitespace-nowrap
+                        shadow-sm
+                      ">
+                        {chip.label}
+                      </span>
+                    </motion.div>
+                  ))}
+
+                  {decorativeDots.map((dot, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute rounded-full bg-accent pointer-events-none"
+                      style={{
+                        top:    dot.top,
+                        left:   dot.left,
+                        width:  dot.size,
+                        height: dot.size,
+                        transform: 'translate(-50%, -50%)',
+                      }}
+                      variants={{
+                        idle:  { opacity: 0.15, scale: 0.6 },
+                        hover: { opacity: 0.8,  scale: 1.4 },
+                      }}
+                      transition={{ delay: dot.delay, duration: 0.3, ease: 'easeOut' }}
+                    />
+                  ))}
+
+                  <motion.div
+                    className="absolute bottom-[1.5rem] left-[-0.5rem] pointer-events-none"
+                    variants={{
+                      idle:  { opacity: 0, x: -8 },
+                      hover: { opacity: 1, x: 0  },
+                    }}
+                    transition={{ delay: 0.1, duration: 0.3, ease: 'easeOut' }}
+                  >
+                    <div className="
+                      flex items-center gap-1.5
+                      font-mono text-[10px] tracking-wider
+                      px-2.5 py-1.5 rounded-full
+                      bg-background/95 backdrop-blur-sm
+                      border border-border
+                      text-muted-foreground
+                      shadow-md
+                      whitespace-nowrap
+                    ">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                      </span>
+                      available
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial="idle"
+                    whileHover="hover"
+                    className="relative overflow-hidden w-full h-full rounded-full"
+                  >
+                    <div className="absolute -inset-[1px] accent-gradient rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-[2px] bg-background rounded-full overflow-hidden">
+                      <img
+                        src={euImg}
+                        alt="Henrique Queiroz"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="
+                        absolute inset-0 rounded-full
+                        bg-accent/5
+                        opacity-0 group-hover:opacity-100
+                        transition-opacity duration-500
+                      " />
+                    </div>
+                  </motion.div>
+
                 </div>
-              </motion.div>
-
-              {/* ── Imagem circular ───────────────────── */}
-              <motion.div
-                initial="idle"
-                whileHover="hover"
-                className="relative overflow-hidden w-full h-full rounded-full"
-              >
-                <div className="absolute -inset-[1px] accent-gradient rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="absolute inset-[2px] bg-background rounded-full overflow-hidden">
-                  <img
-                    src={euImg}
-                    alt="Henrique Queiroz"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-
-                  <div
-                    className="
-                      absolute inset-0
-                      rounded-full
-                      bg-accent/5
-                      opacity-0
-                      group-hover:opacity-100
-                      transition-opacity
-                      duration-500
-                    "
-                  />
-                </div>
-              </motion.div>
-              
+              </div>
             </div>
           </motion.div>
+
         </div>
         <div className="section-divider mt-12" />
       </div>
