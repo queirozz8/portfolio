@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ExternalLink, Quote } from 'lucide-react';
 import React, { useRef, useEffect, useState } from 'react';
-import vipHero from '@/assets/vip-hero.png';
-import pompeiaHero from '@/assets/pompeia-hero.png';
+import vipHero from '@/assets/vip-hero.webp';
+import pompeiaHero from '@/assets/pompeia-hero.webp';
 
 interface ExperienceItem {
   key: string;

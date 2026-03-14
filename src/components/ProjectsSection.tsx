@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import React, { useRef, useEffect, useState } from 'react';
-import notoriumImg from '@/assets/notorium.png';
-import queirozzfmImg from '@/assets/queirozzfm.png';
+import notoriumImg from '@/assets/notorium.webp';
+import queirozzfmImg from '@/assets/queirozzfm.webp';
 
 interface ProjectItem {
   key: string;

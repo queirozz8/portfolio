@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ArrowDown, Mail, Sparkles } from 'lucide-react';
-import euImg from '@/assets/eu.png';
+import euImg from '@/assets/eu.webp';
 
 const floatingChips = [
   { label: 'TypeScript',  top: '2%',   left: '-18%', delay: 0.0 },
