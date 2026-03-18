@@ -30,21 +30,24 @@ const Footer = () => {
           <a
             href="https://github.com/queirozz8"
             target="_blank"
+            aria-label='GitHub'
             rel="noopener noreferrer"
             className="p-3 border border-border text-muted-foreground hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200 rounded-md"
-          >
+            >
             <Github size={20} />
           </a>
           <a
             href="https://linkedin.com/in/queirozz8"
             target="_blank"
+            aria-label='LinkedIn'
             rel="noopener noreferrer"
             className="p-3 border border-border text-muted-foreground hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200 rounded-md"
-          >
+            >
             <Linkedin size={20} />
           </a>
           <a
             href="mailto:henriquejorge1365@gmail.com"
+            aria-label='E-mail'
             className="p-3 border border-border text-muted-foreground hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-200 rounded-md"
           >
             <Mail size={20} />

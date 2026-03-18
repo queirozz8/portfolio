@@ -102,6 +102,7 @@ const Navbar = () => {
             {/* Botão de língua — igual ao original */}
             <button
               onClick={toggleLang}
+              aria-label='Idioma (PTBR) / Language (English)'
               className="font-display text-xs uppercase tracking-widest px-3 py-1.5 border border-border text-foreground hover:border-accent hover:text-accent transition-all duration-200 rounded-md no-select"
             >
               {i18n.language === 'pt' ? 'EN' : 'PT'}
@@ -127,6 +128,7 @@ const Navbar = () => {
             {/* Botão de tema — igual ao original */}
             <button
               onClick={toggleTheme}
+              aria-label='Toggle Theme (Light / Dark)'
               className="p-2 border border-border text-foreground hover:border-accent hover:text-accent transition-all duration-200 rounded-md"
             >
               {isDark ? <Sun size={16} /> : <Moon size={16} />}
