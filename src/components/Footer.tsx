@@ -58,7 +58,7 @@ const Footer = () => {
             e
             <Coffee className="text-yellow-700 fill-yellow-400 w-5 h-5 -mt-0.5" />
             por&nbsp;
-            <span className="font-medium text-foreground">queirozz.</span>
+            <span className="font-bold text-foreground">queirozz.</span>
           </span>
         </div>
 
