@@ -53,9 +53,3 @@ The repository is organized following standard React and Vite conventions:
 - Apply proper ARIA attributes using Radix UI primitives.
 - Code-split heavy trees using `React.lazy` when necessary.
 - Cache external operations strictly via React Query hooks.
-
-## Best Practices for LLMs
-1. Read the `AGENTS.md` file located at the project root for strict rules before editing code.
-2. Prefer incremental changes that preserve the established architectural constraints.
-3. Validate updates locally via `pnpm lint`, `pnpm typecheck`, `pnpm test`, and `pnpm build`.
-4. Never expose environment configurations, credentials, or private information.
