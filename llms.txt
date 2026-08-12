@@ -1,0 +1,175 @@
+# LLMs.txt - Portfolio Configuration
+# Purpose: Provide context and instructions for LLM-assisted development on this project
+# Last updated: 2026-08-12
+# Author: queirozz (Henrique Jorge de Queiroz)
+
+## Project Overview
+- **Name**: queirozz Portfolio
+- **URL**: https://queirozz.vercel.app
+- **Type**: Personal developer portfolio
+- **Owner**: Henrique Jorge de Queiroz
+- **Repository**: https://github.com/queirozz8/portfolio
+
+## Technical Stack
+### Core
+- **Framework**: React 18.3.1
+- **Language**: TypeScript 5.8.3
+- **Bundler**: Vite 5.4.19
+- **Styling**: Tailwind CSS 3.4.17 + ShadCN UI components
+- **State Management**: TanStack Query (React Query) 5.83.0
+- **Router**: React Router DOM 6.30.1
+
+### UI & Animation
+- **Animation**: Framer Motion 12.35.2
+- **Icons**: Lucide React 0.462.0
+- **Theming**: Next Themes 0.3.0 (dark mode support)
+- **Components**: Radix UI primitives, Sonner (toasts), Vaul (drawers)
+- **Carousel**: Embla Carousel React 8.6.0
+- **Charts**: Recharts 2.15.4
+- **Forms**: React Hook Form 7.61.1 + Zod 3.25.76
+- **Date Picker**: React Day Picker 8.10.1 + date-fns 3.6.0
+- **OTP Input**: input-otp 1.4.2
+- **Resizable Panels**: react-resizable-panels 2.1.9
+- **i18n**: i18next 25.8.17 + react-i18next 16.5.6
+
+### Build & Quality
+- **Package Manager**: pnpm (workspace)
+- **ESLint**: 9.32.0 with React hooks and refresh plugins
+- **Testing**: Vitest 3.2.4 + Playwright 1.57.0
+- **PostCSS**: 8.5.6 with Autoprefixer 10.4.21
+- **Tailwind Plugins**: tailwindcss-animate 1.0.7, @tailwindcss/typography 0.5.16
+
+## Project Structure
+```
+portfolio/
+├── public/                    # Static assets
+│   ├── fonts/                 # Custom fonts (Space Grotesk, IBM Plex Sans)
+│   ├── images/                # Project images
+│   ├── favicon.ico            # Site favicon
+│   └── robots.txt            # SEO configuration
+├── src/
+│   ├── components/           # React components (UI + custom)
+│   │   ├── Navbar.tsx        # Navigation bar
+│   │   ├── Hero.tsx          # Hero section
+│   │   ├── StackSection.tsx  # Technology stack showcase
+│   │   ├── ExperienceSection.tsx  # Work experience
+│   │   ├── ProjectsSection.tsx    # Project showcase
+│   │   ├── WorkStyleSection.tsx  # Work methodology
+│   │   ├── Footer.tsx        # Site footer
+│   │   └── ui/               # ShadCN UI components
+│   ├── pages/                # Page components
+│   │   ├── Index.tsx         # Main portfolio page
+│   │   └── NotFound.tsx      # 404 page
+│   ├── hooks/                # Custom React hooks
+│   ├── i18n/                 # Internationalization
+│   ├── assets/               # Additional assets
+│   ├── App.tsx               # Root component
+│   ├── main.tsx              # Entry point
+│   └── index.css             # Global styles
+├── AGENTS.md                 # AI agent instructions
+├── package.json
+└── README.md
+```
+
+## Development Guidelines
+
+### Code Style
+- Use TypeScript with strict typing
+- Follow ShadCN UI component patterns
+- Use tailwind-merge for class merging
+- Use clsx for conditional classes
+- Use class-variance-authority for variant handling
+- Prefer functional components with hooks
+
+### Component Creation
+1. Check existing components in `/src/components/ui/` before creating new ones
+2. Use Radix UI primitives for accessibility
+3. Add proper TypeScript interfaces/props
+4. Include JSDoc comments for complex components
+5. Follow the existing folder structure
+
+### Accessibility
+- All interactive elements must be keyboard navigable
+- Use proper ARIA attributes
+- Ensure color contrast meets WCAG standards
+- Test with screen readers when possible
+- Use semantic HTML elements
+
+### Performance
+- Use React.lazy for code splitting
+- Implement proper memoization (useMemo, useCallback)
+- Optimize images with proper sizes and formats
+- Use React Query for data fetching and caching
+- Avoid unnecessary re-renders
+
+### Responsive Design
+- Mobile-first approach
+- Use Tailwind's responsive prefixes (sm:, md:, lg:, xl:)
+- Test on multiple screen sizes
+- Ensure touch targets are adequate on mobile
+
+## Site Sections
+1. **Navbar**: Navigation with smooth scrolling
+2. **Hero**: Personal introduction with animated cursor
+3. **Stack**: Technology stack with interactive Atlas panels
+4. **Experience**: Work experience timeline
+5. **Projects**: Portfolio projects showcase
+6. **Work Style**: Development methodology
+7. **Footer**: Contact information and links
+
+## Custom Features
+- **CustomCursor**: Animated cursor with glow effects
+- **AmbientCursorGlow**: Ambient glow following cursor
+- **Vesper Theme**: Dark theme with custom styling
+- **Motion**: Smooth animations throughout
+
+## Deployment
+- **Platform**: Vercel
+- **Domain**: queirozz.vercel.app
+- **Build Command**: `pnpm build`
+- **Dev Command**: `pnpm dev`
+- **Preview Command**: `pnpm preview`
+
+## Best Practices for LLMs
+1. **Before coding**:
+   - Read AGENTS.md in the project root
+   - Read relevant documentation in /docs
+   - Inspect existing components
+   - Understand current implementation
+
+2. **Changes**:
+   - Prefer incremental changes
+   - Preserve existing architecture
+   - Avoid unnecessary dependencies
+   - Reuse existing components and utilities
+   - Never invent personal or professional information
+   - Never expose secrets
+
+3. **Validation**:
+   - Run lint: `pnpm lint`
+   - Run typecheck: `pnpm typecheck` or `tsc --noEmit`
+   - Run tests: `pnpm test`
+   - Run build: `pnpm build`
+   - Inspect resulting UI when browser tooling available
+
+4. **Git**:
+   - Work on dedicated branches
+   - Do not commit unless explicitly requested
+   - Never push directly to main without approval
+   - Use conventional commit messages
+
+## Environment Variables
+- None required for development (static site)
+- Vercel handles deployment automatically on push to main
+
+## Contact
+- **Author**: Henrique Jorge de Queiroz
+- **Email**: (not exposed for privacy)
+- **GitHub**: https://github.com/queirozz8
+- **LinkedIn**: (check portfolio site)
+
+## Notes
+- This is a personal portfolio, so all content should be professional and accurate
+- The design uses a dark theme with custom fonts (Space Grotesk, IBM Plex Sans)
+- Animations are subtle but present throughout
+- The site is bilingual (pt-br/en) via i18next
