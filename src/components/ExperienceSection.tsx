@@ -39,6 +39,7 @@ const experiences: ExperienceItem[] = [
     tags: ['Frontend & WhatsApp Bot', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Monorepo', 'NTFY'],
     website: 'https://pompeia-studio.vercel.app',
     image: pompeiaHero,
+    logo: '/images/pompeia_studio.png',
   },
   {
     key: 'vem',
@@ -201,7 +202,7 @@ const ExperienceSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className={`experience-row border-t border-border py-10 group transition-all duration-300 ${exp.website ? 'hover:bg-card/30 rounded-lg -mx-2 px-4 lg:px-6 -mt-px' : ''}`}
+              className="experience-row border-t border-border py-10 group transition-all duration-300 hover:bg-card/30 rounded-lg px-4 lg:px-6 -mt-px"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div className="lg:col-span-4">
@@ -210,7 +211,7 @@ const ExperienceSection = () => {
                       <img
                         src={exp.logo}
                         alt={`${t(`experience.${exp.key}.company`)} logo`}
-                        className="w-10 h-10 object-contain rounded-md bg-white p-1 border border-border flex-shrink-0"
+                        className="experience-logo w-10 h-10 object-contain rounded-md bg-white p-1 border border-border flex-shrink-0"
                       />
                     )}
                     <div className="flex items-start gap-2">
@@ -282,7 +283,7 @@ const ExperienceSection = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, amount: 0.4 }}
                       transition={{ delay: 0.3, duration: 0.4 }}
-                      className="mt-6 border-l-2 border-accent pl-4 bg-accent-soft/50 rounded-r-lg py-3 pr-3 relative"
+                      className="mt-6 border-l-2 border-accent pl-4 bg-accent-soft/50 rounded-lg py-3 pr-3 relative"
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <Quote size={14} className="text-accent" />
