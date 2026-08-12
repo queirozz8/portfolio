@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, MotionValue } from 'framer-motion';
 import { ArrowDown, Mail, Sparkles } from 'lucide-react';
 import euImg from '@/assets/eu.webp';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 /* ---------- dados (mesmos que você já tinha) ---------- */
 const floatingChips = [
@@ -97,6 +98,7 @@ const DecorativeDot: React.FC<{ dot: typeof decorativeDots[number]; depth: numbe
 /* ---------- Hero (com parallax do cursor) ---------- */
 const Hero: React.FC = () => {
   const { t } = useTranslation();
+  const isReducedMotion = useReducedMotion();
 
   // Scroll (mantive seu parallax vertical de scroll)
   const { scrollY } = useScroll();
@@ -254,11 +256,11 @@ const Hero: React.FC = () => {
               <div className="absolute top-0 left-0 origin-top-left scale-[0.6875] sm:scale-100" style={{ width: '320px', height: '320px' }}>
                 <div className="relative w-full h-full group" style={{ padding: '2rem' }}>
 
-                  <motion.svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: 'linear' }} whileHover={{ transition: { duration: 3, repeat: Infinity, ease: 'linear' } }}>
+                  <motion.svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" animate={isReducedMotion ? {} : { rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}>
                     <circle cx="50" cy="50" r="48" fill="none" stroke="hsl(var(--accent) / 0.3)" strokeWidth="0.5" strokeDasharray="4 3" strokeLinecap="round" />
                   </motion.svg>
 
-                  <motion.svg className="absolute pointer-events-none" style={{ inset: '1.2rem' }} viewBox="0 0 100 100" animate={{ rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}>
+                  <motion.svg className="absolute pointer-events-none" style={{ inset: '1.2rem' }} viewBox="0 0 100 100" animate={isReducedMotion ? {} : { rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}>
                     <circle cx="50" cy="50" r="47" fill="none" stroke="hsl(var(--accent) / 0.12)" strokeWidth="0.4" strokeDasharray="1 6" strokeLinecap="round" />
                   </motion.svg>
 
