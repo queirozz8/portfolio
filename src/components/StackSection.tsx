@@ -6,14 +6,14 @@ const stackData = {
   languages: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Python (básico)'],
   frontend: ['Next.js', 'React.js', 'ShadCN UI', 'Tailwind CSS'],
   backend: ['Express.js', 'Node.js', 'SQL & NoSQL', 'Supabase', 'n8n', 'Docker', 'cPanel'],
-  tools: ['AI Tools', 'Linux', 'Git', 'Inglês (nível B2)'],
+  tools: ['AI Tools', 'AI Agents', 'HeyGen', 'Linux', 'Git', 'Inglês (nível B2)'],
 };
 
 const categoryColors: Record<string, string> = {
   languages: 'bg-accent/10 border-accent/30 text-accent hover:bg-accent/20 hover:border-accent',
-  frontend: 'bg-glow/10 border-glow/30 text-glow hover:bg-glow/20 hover:border-glow',
+  frontend: 'bg-glow/10 border-glow/30 text-foreground hover:bg-glow/20 hover:border-glow',
   backend: 'bg-accent/10 border-accent/30 text-accent hover:bg-accent/20 hover:border-accent',
-  tools: 'bg-glow/10 border-glow/30 text-glow hover:bg-glow/20 hover:border-glow',
+  tools: 'bg-glow/10 border-glow/30 text-foreground hover:bg-glow/20 hover:border-glow',
 };
 
 const allKey = 'all';

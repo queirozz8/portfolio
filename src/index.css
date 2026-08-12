@@ -57,51 +57,51 @@
      :root = TEMA CLARO (padrão, sem classe .dark)
      ============================================= */
   :root {
-    --background: 220 20% 97%;
-    --foreground: 220 20% 10%;
+    --background: 40 20% 97%;
+    --foreground: 30 15% 10%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card: 40 20% 99%;
+    --card-foreground: 30 15% 10%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover: 40 20% 99%;
+    --popover-foreground: 30 15% 10%;
 
-    --primary: 243 75% 59%;
+    --primary: 27 80% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 90%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 30 14% 90%;
+    --secondary-foreground: 30 15% 10%;
 
-    --muted: 220 14% 93%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 30 14% 93%;
+    --muted-foreground: 30 10% 45%;
 
-    --accent: 243 75% 59%;
+    --accent: 27 80% 45%;
     --accent-foreground: 0 0% 100%;
 
     /* Versão suave do accent para fundos (ex: badges, hovers) */
-    --accent-soft: 243 58% 92%;
+    --accent-soft: 27 58% 92%;
 
     /* Cor secundária para gradientes */
-    --glow: 217 75% 45%;
+    --glow: 27 80% 38%;
     --glow-foreground: 0 0% 100%;
 
     --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 18% 82%;
-    --input: 220 18% 82%;
-    --ring: 243 75% 59%;
+    --border: 30 15% 82%;
+    --input: 30 15% 82%;
+    --ring: 27 80% 45%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 220 20% 97%;
-    --sidebar-foreground: 220 20% 10%;
-    --sidebar-primary: 243 75% 59%;
+    --sidebar-background: 40 20% 97%;
+    --sidebar-foreground: 30 15% 10%;
+    --sidebar-primary: 27 80% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 243 58% 92%;
-    --sidebar-accent-foreground: 220 20% 10%;
-    --sidebar-border: 220 18% 82%;
-    --sidebar-ring: 243 75% 59%;
+    --sidebar-accent: 27 58% 92%;
+    --sidebar-accent-foreground: 30 15% 10%;
+    --sidebar-border: 30 15% 82%;
+    --sidebar-ring: 27 80% 45%;
 
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'IBM Plex Sans', sans-serif;
@@ -111,47 +111,47 @@
      .dark = TEMA ESCURO (aplicado via JS no <html>)
      ============================================= */
   .dark {
-    --background: 220 18% 4%;
-    --foreground: 220 15% 94%;
+    --background: 0 0% 6%;
+    --foreground: 0 0% 94%;
 
-    --card: 220 18% 9%;
-    --card-foreground: 220 15% 94%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 94%;
 
-    --popover: 220 18% 9%;
-    --popover-foreground: 220 15% 94%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 94%;
 
-    --primary: 243 75% 59%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 27 100% 80%;
+    --primary-foreground: 0 0% 10%;
 
-    --secondary: 220 14% 14%;
-    --secondary-foreground: 220 15% 94%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 94%;
 
-    --muted: 220 14% 16%;
-    --muted-foreground: 220 10% 62%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 243 75% 59%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 27 100% 80%;
+    --accent-foreground: 0 0% 10%;
 
-    --accent-soft: 243 58% 22%;
+    --accent-soft: 27 60% 18%;
 
-    --glow: 217 75% 40%;
-    --glow-foreground: 0 0% 100%;
+    --glow: 27 100% 70%;
+    --glow-foreground: 0 0% 10%;
 
     --destructive: 0 72% 40%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 18% 24%;
-    --input: 220 18% 24%;
-    --ring: 243 75% 59%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 27 100% 80%;
 
-    --sidebar-background: 220 18% 4%;
-    --sidebar-foreground: 220 15% 94%;
-    --sidebar-primary: 243 75% 59%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 243 58% 22%;
-    --sidebar-accent-foreground: 220 15% 94%;
-    --sidebar-border: 220 18% 24%;
-    --sidebar-ring: 243 75% 59%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 94%;
+    --sidebar-primary: 27 100% 80%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 27 60% 18%;
+    --sidebar-accent-foreground: 0 0% 94%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 27 100% 80%;
   }
 }
 
@@ -195,7 +195,7 @@
   }
 
   .accent-gradient-text {
-    background: linear-gradient(135deg, hsl(243 75% 59%), hsl(243 76% 67%));
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--glow)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -210,6 +210,15 @@
 
   .portrait-grayscale:hover {
     filter: grayscale(0%) contrast(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
