@@ -114,10 +114,11 @@ Check at minimum:
 
 If something looks visually inconsistent, iterate and correct it.
 
-## 5. Completion criteria
+## 6. Completion criteria
 
 The task is complete only when:
 
+- use the branch "redesign/vesper-theme"
 - all relevant company logos have been integrated;
 - my personal logo appears beside my name in the header;
 - the new motion/visual effects are implemented;
@@ -127,6 +128,7 @@ The task is complete only when:
 - no existing functionality has regressed;
 - lint/typecheck/build pass;
 - the final implementation has been visually inspected in the browser.
+- commit and pull request
 
 Do not stop merely because the code compiles.
 

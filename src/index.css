@@ -163,6 +163,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -190,6 +191,30 @@
     @apply bg-card/50 backdrop-blur-sm border border-border;
   }
 
+  .site-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .site-shell > main {
+    position: relative;
+    z-index: 1;
+  }
+
+  .site-shell::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.26;
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.18) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.18) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, black, transparent 72%);
+  }
+
   .accent-gradient {
     background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--glow)));
   }
@@ -199,6 +224,56 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .experience-row {
+    position: relative;
+  }
+
+  .experience-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(105deg, hsl(var(--accent) / 0.08), transparent 35%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+  }
+
+  .experience-row:hover::before,
+  .experience-row:focus-within::before {
+    opacity: 1;
+  }
+
+  .experience-logo {
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease;
+  }
+
+  .experience-row:hover .experience-logo,
+  .experience-row:focus-within .experience-logo {
+    transform: scale(1.08) rotate(-3deg);
+    box-shadow: 0 0 0 3px hsl(var(--accent) / 0.12), 0 10px 24px hsl(var(--accent) / 0.16);
+  }
+
+  .interactive-surface {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .interactive-surface::after {
+    content: "";
+    position: absolute;
+    inset: -45% -25%;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 42%, hsl(var(--accent) / 0.12) 50%, transparent 58%);
+    transform: translateX(-65%);
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .interactive-surface:hover::after,
+  .interactive-surface:focus-within::after {
+    transform: translateX(65%);
   }
 }
 
@@ -222,6 +297,22 @@
   }
 }
 
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .ambient-cursor-glow {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 360px;
+    height: 360px;
+    border-radius: 999px;
+    pointer-events: none;
+    background: radial-gradient(circle, hsl(var(--accent) / 0.1) 0%, hsl(var(--glow) / 0.045) 34%, transparent 72%);
+    filter: blur(7px);
+    will-change: transform;
+  }
+}
+
 /* =============================================================================
    CUSTOM CURSOR
    
@@ -235,7 +326,7 @@
    e .cursor-ring não são carregadas, como se não existissem.
    ============================================================================= */
 
-@media (pointer: fine) {
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
 
   /* Esconde o cursor nativo do SO em absolutamente todos os elementos.
      O !important é necessário para sobrescrever regras de libs de UI

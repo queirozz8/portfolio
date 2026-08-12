@@ -4,6 +4,7 @@ import { ExternalLink, Quote } from 'lucide-react';
 import React, { useRef, useEffect, useState } from 'react';
 import vipHero from '@/assets/vip-hero.webp';
 import pompeiaHero from '@/assets/pompeia-hero.webp';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 interface ExperienceItem {
   key: string;
@@ -17,29 +18,34 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     key: 'engemedical',
-    tags: ['n8n', 'SDRs Automatizados', 'WhatsApp', 'Web Support', 'React / TypeScript'],
+    tags: ['HeyGen', 'AI Video Creation', 'Python GUI Automation', 'Python', 'n8n'],
     logo: '/images/engemedical_logo.png',
+    website: 'https://engemedical.com',
   },
   {
     key: 'vip',
     tags: ['Frontend', 'React', 'TypeScript', 'ShadCN UI', 'cPanel'],
     website: 'https://vipadm.com.br',
     image: vipHero,
+    logo: '/images/vip_logo.png',
   },
   {
     key: 'frilic',
     tags: ['Backend', 'Node.js', 'TypeScript', 'whatsapp-web.js', 'Automation'],
+    logo: '/images/frilic.png',
   },
   {
     key: 'pompeia',
     tags: ['Frontend & WhatsApp Bot', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Monorepo', 'NTFY'],
     website: 'https://pompeia-studio.vercel.app',
     image: pompeiaHero,
+    logo: '/images/pompeia_studio.png',
   },
   {
     key: 'vem',
     tags: ['Automation', 'Node.js', 'JavaScript', 'WhatsApp Bot'],
     hasTestimonial: true,
+    logo: '/images/vemcomagenteviagens.png',
   },
 ];
 
@@ -48,7 +54,8 @@ const TiltImage: React.FC<{
   alt: string;
   link?: string;
   intensity?: number;
-}> = ({ src, alt, link, intensity = 7 }) => {
+  reducedMotion: boolean;
+}> = ({ src, alt, link, intensity = 7, reducedMotion }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
 
@@ -62,6 +69,13 @@ const TiltImage: React.FC<{
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
+
+  useEffect(() => {
+    if (reducedMotion && containerRef.current && imgRef.current) {
+      containerRef.current.style.transform = '';
+      imgRef.current.style.transform = 'translate3d(0,0,0)';
+    }
+  }, [reducedMotion]);
 
   const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
 
@@ -90,6 +104,7 @@ const TiltImage: React.FC<{
   };
 
   const handleMove = (e: React.MouseEvent) => {
+    if (reducedMotion) return;
     const el = containerRef.current;
     if (!el) return;
 
@@ -108,6 +123,7 @@ const TiltImage: React.FC<{
   };
 
   const handleEnter = () => {
+    if (reducedMotion) return;
     setIsHover(true);
     targetRef.current.x = currentRef.current.x;
     targetRef.current.y = currentRef.current.y;
@@ -115,6 +131,7 @@ const TiltImage: React.FC<{
   };
 
   const handleLeave = () => {
+    if (reducedMotion) return;
     setIsHover(false);
     targetRef.current.x = 0;
     targetRef.current.y = 0;
@@ -162,6 +179,7 @@ const TiltImage: React.FC<{
 
 const ExperienceSection = () => {
   const { t } = useTranslation();
+  const reducedMotion = useReducedMotion();
 
   return (
     <section id="experience" className="py-24">
@@ -169,7 +187,7 @@ const ExperienceSection = () => {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6 }}
           className="font-display text-5xl md:text-7xl font-bold text-foreground mb-16 no-select"
         >
@@ -180,11 +198,11 @@ const ExperienceSection = () => {
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.key}
-              initial={{ opacity: 0, y: 20 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className={`border-t border-border py-10 group transition-colors duration-200 ${exp.website ? 'hover:bg-card/30 rounded-lg -mx-2 px-4 lg:px-6 -mt-px' : ''}`}
+              className="experience-row border-t border-border py-10 group transition-all duration-300 hover:bg-card/30 rounded-lg px-4 lg:px-6 -mt-px"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div className="lg:col-span-4">
@@ -193,7 +211,7 @@ const ExperienceSection = () => {
                       <img
                         src={exp.logo}
                         alt={`${t(`experience.${exp.key}.company`)} logo`}
-                        className="w-10 h-10 object-contain rounded-md bg-white p-1 border border-border flex-shrink-0"
+                        className="experience-logo w-10 h-10 object-contain rounded-md bg-white p-1 border border-border flex-shrink-0"
                       />
                     )}
                     <div className="flex items-start gap-2">
@@ -222,9 +240,9 @@ const ExperienceSection = () => {
                   </p>
 
                   <motion.div
-                    initial={{ opacity: 0, y: 6 }}
+                    initial={reducedMotion ? false : { opacity: 0, y: 6 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.4 }}
                     transition={{ delay: 0.15, duration: 0.4 }}
                     className="mt-4 border border-border bg-card/40 rounded-md p-3"
                   >
@@ -249,23 +267,23 @@ const ExperienceSection = () => {
 
                   {exp.image && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={reducedMotion ? false : { opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: true, amount: 0.3 }}
                       transition={{ delay: 0.2, duration: 0.5 }}
                       className="mt-6 rounded-lg overflow-hidden border border-border group/img relative"
                     >
-                      <TiltImage src={exp.image} alt={t(`experience.${exp.key}.company`)} link={exp.website} />
+                      <TiltImage src={exp.image} alt={t(`experience.${exp.key}.company`)} link={exp.website} reducedMotion={reducedMotion} />
                     </motion.div>
                   )}
 
                   {exp.hasTestimonial && (
                     <motion.div
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={reducedMotion ? false : { opacity: 0, x: -10 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: true, amount: 0.4 }}
                       transition={{ delay: 0.3, duration: 0.4 }}
-                      className="mt-6 border-l-2 border-accent pl-4 bg-accent-soft/50 rounded-r-lg py-3 pr-3 relative"
+                      className="mt-6 border-l-2 border-accent pl-4 bg-accent-soft/50 rounded-lg py-3 pr-3 relative"
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <Quote size={14} className="text-accent" />

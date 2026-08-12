@@ -181,9 +181,7 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className={`border-t border-border py-10 group transition-colors duration-200 ${
-                project.website ? 'hover:bg-card/30 rounded-lg -mx-2 px-4 lg:px-6 -mt-px' : ''
-              }`}
+              className="border-t border-border py-10 group transition-colors duration-200 hover:bg-card/30 rounded-lg px-4 lg:px-6 -mt-px"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div className="lg:col-span-4">

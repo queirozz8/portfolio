@@ -81,9 +81,18 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-display text-xl font-bold tracking-tight text-foreground no-select"
+            aria-label="Back to top"
+            className="group flex items-center gap-2.5 rounded-md py-1 font-display text-xl font-bold tracking-tight text-foreground no-select focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            queiro<span className="accent-gradient-text">zz</span>
+            <span className="brand-mark flex h-7 w-8 items-center justify-center rounded-sm border border-accent/30 bg-accent/5 transition-colors duration-300 group-hover:border-accent/60 group-hover:bg-accent/10">
+              <img
+                src="/images/queirozz_logo.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-5 w-7 object-contain"
+              />
+            </span>
+            <span>queiro<span className="accent-gradient-text">zz</span></span>
           </button>
 
           <div className="hidden md:flex items-center gap-8">

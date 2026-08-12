@@ -39,7 +39,7 @@ const WorkStyleSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                 whileHover={{ y: -4 }}
-                className="glass-card p-8 rounded-lg group cursor-default transition-all duration-300 hover:border-accent/30"
+                className="glass-card interactive-surface p-8 rounded-lg group cursor-default transition-all duration-300 hover:border-accent/30"
               >
                 <div className={`w-10 h-10 rounded-md bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors duration-300`}>
                   <Icon
