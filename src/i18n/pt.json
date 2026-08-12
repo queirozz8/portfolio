@@ -26,6 +26,14 @@
     "title": "Experiência",
     "remote": "Remoto",
     "role_dev": "Software Developer",
+    "engemedical": {
+      "company": "Engemedical Brasil",
+      "role": "Desenvolvedor de Automações com IA",
+      "type": "Estágio",
+      "period": "Mai 2026 – Presente",
+      "location": "Belo Horizonte, Minas Gerais, Brasil · Remoto",
+      "description": "Atuo como Estagiário Desenvolvedor de Automações e Suporte Web na Engemedical, consultora de saúde com mais de 10 anos de mercado. No setor de automações, desenvolvo fluxos comerciais com n8n, incluindo SDRs automatizados, prospecção ativa e atendimento via WhatsApp — reduzindo fricção no processo comercial e escalando operações sem aumento proporcional de equipe. No suporte à plataforma Clube Engemedical, atuo na manutenção e evolução do produto web, corrigindo bugs e implementando melhorias com base em feedback direto do time comercial."
+    },
     "vip": {
       "company": "VIP Administradora de Bens e Condomínios",
       "period": "Jan 2026 – Mar 2026 · 3 meses",

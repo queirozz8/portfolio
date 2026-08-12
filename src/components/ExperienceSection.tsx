@@ -11,9 +11,15 @@ interface ExperienceItem {
   website?: string;
   hasTestimonial?: boolean;
   image?: string;
+  logo?: string;
 }
 
 const experiences: ExperienceItem[] = [
+  {
+    key: 'engemedical',
+    tags: ['n8n', 'SDRs Automatizados', 'WhatsApp', 'Web Support', 'React / TypeScript'],
+    logo: '/images/engemedical_logo.png',
+  },
   {
     key: 'vip',
     tags: ['Frontend', 'React', 'TypeScript', 'ShadCN UI', 'cPanel'],
@@ -182,28 +188,37 @@ const ExperienceSection = () => {
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div className="lg:col-span-4">
-                  <div className="flex items-start gap-2">
-                    {exp.website ? (
-                      <a
-                        href={exp.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 font-display text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-200 no-select rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer hover:underline decoration-accent/60 underline-offset-2"
-                      >
-                        <span>{t(`experience.${exp.key}.company`)}</span>
-                        <ExternalLink size={14} className="flex-shrink-0 opacity-70 group-hover:opacity-100" />
-                      </a>
-                    ) : (
-                      <h3 className="font-display text-lg font-semibold text-foreground no-select">
-                        {t(`experience.${exp.key}.company`)}
-                      </h3>
+                  <div className="flex items-center gap-3">
+                    {exp.logo && (
+                      <img
+                        src={exp.logo}
+                        alt={`${t(`experience.${exp.key}.company`)} logo`}
+                        className="w-10 h-10 object-contain rounded-md bg-white p-1 border border-border flex-shrink-0"
+                      />
                     )}
+                    <div className="flex items-start gap-2">
+                      {exp.website ? (
+                        <a
+                          href={exp.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 font-display text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-200 no-select rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer hover:underline decoration-accent/60 underline-offset-2"
+                        >
+                          <span>{t(`experience.${exp.key}.company`)}</span>
+                          <ExternalLink size={14} className="flex-shrink-0 opacity-70 group-hover:opacity-100" />
+                        </a>
+                      ) : (
+                        <h3 className="font-display text-lg font-semibold text-foreground no-select">
+                          {t(`experience.${exp.key}.company`)}
+                        </h3>
+                      )}
+                    </div>
                   </div>
-                  <p className="font-body text-sm text-muted-foreground mt-1 no-select">
-                    {t('experience.role_dev')}
+                  <p className="font-body text-sm font-medium text-foreground/90 mt-1.5 no-select">
+                    {t(`experience.${exp.key}.role`, { defaultValue: t('experience.role_dev') })}
                   </p>
                   <p className="font-body text-xs text-muted-foreground mt-1 uppercase tracking-wider no-select">
-                    {t(`experience.${exp.key}.period`)} · {t('experience.remote')}
+                    {t(`experience.${exp.key}.period`)} · {exp.key === 'engemedical' ? t(`experience.${exp.key}.type`) : t('experience.remote')}
                   </p>
 
                   <motion.div
