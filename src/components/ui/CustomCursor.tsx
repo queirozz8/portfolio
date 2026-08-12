@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CustomCursor
@@ -11,6 +12,7 @@ import { useEffect, useRef } from "react";
 // ─────────────────────────────────────────────────────────────────────────────
 
 const CustomCursor = () => {
+  const reducedMotion = useReducedMotion();
   // useRef cria uma referência mutável para os elementos do DOM.
   // Usamos ref (e não state) porque precisamos ler/escrever os valores
   // frame a frame, e qualquer re-render causaria instabilidade na animação.
@@ -18,6 +20,8 @@ const CustomCursor = () => {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (reducedMotion) return;
+
     const dot = dotRef.current;
     const ring = ringRef.current;
 
@@ -141,7 +145,9 @@ const CustomCursor = () => {
       document.removeEventListener("mouseover", handleMouseOver);
       document.removeEventListener("mouseout", handleMouseOut);
     };
-  }, []); // [] → roda apenas uma vez, no mount.
+  }, [reducedMotion]);
+
+  if (reducedMotion) return null;
 
   // ── Markup ────────────────────────────────────────────────────────────────
   //

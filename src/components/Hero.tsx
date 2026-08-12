@@ -32,10 +32,11 @@ const decorativeDots = [
 type CursorProps = {
   pointerX: MotionValue<number>;
   pointerY: MotionValue<number>;
+  reducedMotion: boolean;
 };
 
 /** Chip flutuante que reage ao cursor (cada chip tem profondeur distinta) */
-const FloatingChip: React.FC<{ chip: typeof floatingChips[number]; depth: number } & CursorProps> = ({ chip, depth, pointerX, pointerY }) => {
+const FloatingChip: React.FC<{ chip: typeof floatingChips[number]; depth: number } & CursorProps> = ({ chip, depth, pointerX, pointerY, reducedMotion }) => {
   // x e y do chip são transformados a partir do pointer (profundidade ajusta intensidade)
   const x = useTransform(pointerX, (v) => v * depth * 28); // px
   const y = useTransform(pointerY, (v) => v * depth * 18); // px
@@ -48,9 +49,9 @@ const FloatingChip: React.FC<{ chip: typeof floatingChips[number]; depth: number
       style={{
         top: chip.top,
         left: chip.left,
-        x,
-        y,
-        rotate,
+        x: reducedMotion ? 0 : x,
+        y: reducedMotion ? 0 : y,
+        rotate: reducedMotion ? 0 : rotate,
       }}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -72,7 +73,7 @@ const FloatingChip: React.FC<{ chip: typeof floatingChips[number]; depth: number
 };
 
 /** Dot decorativa que reage ao cursor (profundidade = intensidade) */
-const DecorativeDot: React.FC<{ dot: typeof decorativeDots[number]; depth: number } & CursorProps> = ({ dot, depth, pointerX, pointerY }) => {
+const DecorativeDot: React.FC<{ dot: typeof decorativeDots[number]; depth: number } & CursorProps> = ({ dot, depth, pointerX, pointerY, reducedMotion }) => {
   const x = useTransform(pointerX, (v) => v * depth * 12);
   const y = useTransform(pointerY, (v) => v * depth * 8);
   const scale = useTransform(pointerX, (v) => 1 + Math.abs(v) * depth * 0.15);
@@ -86,9 +87,9 @@ const DecorativeDot: React.FC<{ dot: typeof decorativeDots[number]; depth: numbe
         width: dot.size,
         height: dot.size,
         transform: 'translate(-50%, -50%)', // mantém alinhamento central
-        x,
-        y,
-        scale,
+        x: reducedMotion ? 0 : x,
+        y: reducedMotion ? 0 : y,
+        scale: reducedMotion ? 1 : scale,
       }}
       transition={{ delay: dot.delay, duration: 0.25, ease: 'easeOut' }}
     />
@@ -122,6 +123,8 @@ const Hero: React.FC = () => {
 
   // attach mouse handlers somente no client
   useEffect(() => {
+    if (isReducedMotion) return;
+
     const el = containerRef.current;
     if (!el) return;
 
@@ -155,7 +158,7 @@ const Hero: React.FC = () => {
       el.removeEventListener('mouseleave', handleLeave);
       el.removeEventListener('blur', handleLeave);
     };
-  }, [pointerX, pointerY]);
+  }, [isReducedMotion, pointerX, pointerY]);
 
   /* ---------- combinações scroll + cursor (ex: y = scrollY + pointerY*depth) ---------- */
   // useTransform aceita arrays: combinamos o valor do scroll com o deslocamento do cursor
@@ -167,6 +170,7 @@ const Hero: React.FC = () => {
 
   // rotação leve dos anéis com cursor (sutil)
   const ringRotate = useTransform(springX, (v) => v * 8);   // usos pequenos
+  const reverseRingRotate = useTransform(springX, (v) => v * -6);
 
   return (
     <section id="about" className="min-h-screen flex items-center pt-16 relative overflow-hidden" ref={containerRef}>
@@ -174,27 +178,27 @@ const Hero: React.FC = () => {
       <div aria-hidden="true" className="pointer-events-none">
 
         <motion.div
-          style={{ y: y2Combined }}
+          style={{ y: isReducedMotion ? 0 : y2Combined }}
           className="absolute top-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl"
         />
 
         <motion.div
-          style={{ y: y4Combined }}
+          style={{ y: isReducedMotion ? 0 : y4Combined }}
           className="absolute bottom-20 left-10 w-96 h-96 bg-glow/5 rounded-full blur-3xl"
         />
 
         <motion.div
-          style={{ y: y3Combined }}
+          style={{ y: isReducedMotion ? 0 : y3Combined }}
           className="absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-accent/3 rounded-full blur-[80px]"
         />
 
         <motion.div
-          style={{ y: y1Combined }}
+          style={{ y: isReducedMotion ? 0 : y1Combined }}
           className="absolute bottom-0 right-0 w-64 h-64 bg-glow/4 rounded-full blur-[100px]"
         />
 
         <motion.div
-          style={{ y: y3Combined, rotate: ringRotate }}
+          style={{ y: isReducedMotion ? 0 : y3Combined, rotate: isReducedMotion ? 0 : ringRotate }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-[0.04]"
         >
           <svg viewBox="0 0 100 100" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -203,7 +207,7 @@ const Hero: React.FC = () => {
         </motion.div>
 
         <motion.div
-          style={{ y: y2Combined, rotate: useTransform(springX, (v) => v * -6) }}
+          style={{ y: isReducedMotion ? 0 : y2Combined, rotate: isReducedMotion ? 0 : reverseRingRotate }}
           className="absolute top-1/3 right-[5%] w-[300px] h-[300px] opacity-[0.06]"
         >
           <svg viewBox="0 0 100 100" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -266,12 +270,12 @@ const Hero: React.FC = () => {
 
                   {/* chips (cada um com profundidade distinta) */}
                   {floatingChips.map((chip, i) => (
-                    <FloatingChip key={chip.label} chip={chip} depth={0.9 - i * 0.08} pointerX={springX} pointerY={springY} />
+                    <FloatingChip key={chip.label} chip={chip} depth={0.9 - i * 0.08} pointerX={springX} pointerY={springY} reducedMotion={isReducedMotion} />
                   ))}
 
                   {/* decorative dots */}
                   {decorativeDots.map((dot, i) => (
-                    <DecorativeDot key={i} dot={dot} depth={0.55 - i * 0.05} pointerX={springX} pointerY={springY} />
+                    <DecorativeDot key={i} dot={dot} depth={0.55 - i * 0.05} pointerX={springX} pointerY={springY} reducedMotion={isReducedMotion} />
                   ))}
 
                   <motion.div className="absolute bottom-[1.5rem] left-[7rem] pointer-events-none z-10" initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1, duration: 0.3, ease: 'easeOut' }}>

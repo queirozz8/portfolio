@@ -200,6 +200,26 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  .experience-row {
+    position: relative;
+  }
+
+  .experience-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(105deg, hsl(var(--accent) / 0.08), transparent 35%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+  }
+
+  .experience-row:hover::before,
+  .experience-row:focus-within::before {
+    opacity: 1;
+  }
 }
 
 @layer utilities {
@@ -235,7 +255,7 @@
    e .cursor-ring não são carregadas, como se não existissem.
    ============================================================================= */
 
-@media (pointer: fine) {
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
 
   /* Esconde o cursor nativo do SO em absolutamente todos os elementos.
      O !important é necessário para sobrescrever regras de libs de UI
