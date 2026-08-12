@@ -118,7 +118,7 @@ If something looks visually inconsistent, iterate and correct it.
 
 The task is complete only when:
 
-- create new branch
+- use the branch "redesign/vesper-theme"
 - all relevant company logos have been integrated;
 - my personal logo appears beside my name in the header;
 - the new motion/visual effects are implemented;
