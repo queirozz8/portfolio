@@ -4,7 +4,22 @@ import { ExternalLink, Quote } from 'lucide-react';
 import React, { useRef, useEffect, useState } from 'react';
 import vipHero from '@/assets/vip-hero.webp';
 import pompeiaHero from '@/assets/pompeia-hero.webp';
+import dentalisHero from '@/assets/dentalis-hero.webp';
+import dentalscHero from '@/assets/dentalsc-hero.webp';
+import dentalisLogo from '@/assets/dentalislogo.png';
+import dentalscLogo from '@/assets/dentalsclogo.png';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
+
+interface ExperienceImage {
+  src: string;
+  label: string;
+  link?: string;
+}
+
+interface ExperienceLogo {
+  src: string;
+  label: string;
+}
 
 interface ExperienceItem {
   key: string;
@@ -12,7 +27,9 @@ interface ExperienceItem {
   website?: string;
   hasTestimonial?: boolean;
   image?: string;
+  images?: ExperienceImage[];
   logo?: string;
+  logos?: ExperienceLogo[];
   showType?: boolean;
   showLocation?: boolean;
   projectLinks?: Array<{ label: string; href: string }>;
@@ -30,6 +47,14 @@ const experiences: ExperienceItem[] = [
   {
     key: 'dentalis',
     tags: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'ShadCN UI', 'Frontend', 'SEO', 'Landing Pages'],
+    logos: [
+      { src: dentalisLogo, label: 'Dentalis' },
+      { src: dentalscLogo, label: 'DentalSC' },
+    ],
+    images: [
+      { src: dentalisHero, label: 'Dentalis', link: 'https://dentalisclinical.com.br' },
+      { src: dentalscHero, label: 'DentalSC', link: 'https://dentalsc.com.br' },
+    ],
     showType: true,
     showLocation: true,
     projectLinks: [
@@ -222,13 +247,22 @@ const ExperienceSection = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div className="lg:col-span-4">
                   <div className="flex items-center gap-3">
-                    {exp.logo && (
-                      <img
-                        src={exp.logo}
-                        alt={`${t(`experience.${exp.key}.company`)} logo`}
-                        className="experience-logo w-10 h-10 object-contain rounded-md bg-white p-1 border border-border flex-shrink-0"
-                      />
-                    )}
+                    {exp.logos
+                      ? exp.logos.map((logo) => (
+                          <img
+                            key={logo.src}
+                            src={logo.src}
+                            alt={`${logo.label} logo`}
+                            className="experience-logo w-10 h-10 object-contain rounded-md bg-white p-1 border border-border flex-shrink-0"
+                          />
+                        ))
+                      : exp.logo && (
+                          <img
+                            src={exp.logo}
+                            alt={`${t(`experience.${exp.key}.company`)} logo`}
+                            className="experience-logo w-10 h-10 object-contain rounded-md bg-white p-1 border border-border flex-shrink-0"
+                          />
+                        )}
                     <div className="flex items-start gap-2">
                       {exp.website ? (
                         <a
@@ -319,6 +353,23 @@ const ExperienceSection = () => {
                     >
                       <TiltImage src={exp.image} alt={t(`experience.${exp.key}.company`)} link={exp.website} reducedMotion={reducedMotion} />
                     </motion.div>
+                  )}
+
+                  {exp.images && (
+                    <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {exp.images.map((image) => (
+                        <motion.div
+                          key={image.src}
+                          initial={reducedMotion ? false : { opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, amount: 0.3 }}
+                          transition={{ delay: 0.2, duration: 0.5 }}
+                          className="rounded-lg overflow-hidden border border-border group/img relative"
+                        >
+                          <TiltImage src={image.src} alt={`${image.label} hero`} link={image.link} reducedMotion={reducedMotion} />
+                        </motion.div>
+                      ))}
+                    </div>
                   )}
 
                   {exp.hasTestimonial && (

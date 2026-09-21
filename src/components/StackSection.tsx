@@ -6,8 +6,8 @@ import { useReducedMotion } from '@/hooks/use-reduced-motion';
 const stackData = {
   languages: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Python (básico)'],
   frontend: ['Next.js', 'React.js', 'ShadCN UI', 'Tailwind CSS'],
-  backend: ['Express.js', 'Node.js', 'SQL & NoSQL', 'Supabase', 'n8n', 'Docker', 'cPanel'],
-  tools: ['AI Tools', 'AI Agents', 'HeyGen', 'Linux', 'Git', 'Inglês (nível B2)'],
+  backend: ['Express.js', 'Node.js', 'NestJS', 'whatsapp-web.js', 'SQL & NoSQL', 'Supabase', 'n8n', 'Docker', 'cPanel'],
+  tools: ['AI Tools', 'AI Agents', 'AI Automation', 'HeyGen', 'WhatsApp', 'NTFY', 'Monorepo', 'SEO', 'Linux', 'Git', 'Inglês (nível B2)'],
 };
 
 const allKey = 'all';
@@ -166,7 +166,7 @@ const StackSection = () => {
                           ease: [0.16, 1, 0.3, 1],
                         }
                   }
-                  className="stack-panel glass-card rounded-lg p-5 sm:p-6"
+                  className="stack-panel rounded-lg p-5 sm:p-6"
                 >
                   <header className="stack-panel-header mb-4 flex items-center gap-3">
                     <span

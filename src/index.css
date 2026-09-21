@@ -299,13 +299,7 @@
 
   .stack-panel {
     position: relative;
-    transition: border-color 300ms ease, box-shadow 300ms ease;
-  }
-
-  .stack-panel:hover,
-  .stack-panel:focus-within {
-    border-color: hsl(var(--accent) / 0.35);
-    box-shadow: 0 0 0 1px hsl(var(--accent) / 0.08), 0 18px 40px hsl(var(--background) / 0.35);
+    background: hsl(var(--card) / 0.5);
   }
 
   .stack-tile-grid {
