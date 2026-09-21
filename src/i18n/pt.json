@@ -24,15 +24,25 @@
   },
   "experience": {
     "title": "Experiência",
+    "projects": "Projetos",
     "remote": "Remoto",
     "role_dev": "Software Developer",
     "engemedical": {
       "company": "Engemedical Brasil",
-      "role": "Desenvolvedor de Automações com IA",
+      "role": "Desenvolvedor Full-Stack e de Automações com IA",
       "type": "Estágio",
-      "period": "Mai 2026 – Presente",
+      "period": "Mai 2026 - Presente",
       "location": "Belo Horizonte, Minas Gerais, Brasil · Remoto",
-      "description": "Atuo como Estagiário Desenvolvedor de Automações com IA na Engemedical, consultora de saúde com mais de 10 anos de mercado. Meu foco principal é a criação de vídeos com IA usando HeyGen para cursos de saúde ocupacional e segurança do trabalho. Também desenvolvo automações de interface gráfica com Python e fluxos de automação que apoiam as operações da empresa."
+      "description": "Atuo como Estagiário Desenvolvedor Full-Stack e de Automações com IA na Engemedical Brasil, consultora de saúde com mais de 10 anos de mercado.\n\nNo desenvolvimento Full-Stack, participo da construção e evolução da nova plataforma da empresa, utilizando Next.js e TypeScript no frontend e NestJS no backend. Desenvolvo novas páginas, implemento funcionalidades, realizo integrações e contribuo continuamente para a evolução da aplicação.\n\nNa área de automações, desenvolvo fluxos comerciais com n8n, incluindo SDRs automatizados, prospecção ativa e atendimento via WhatsApp. Essas soluções ajudam a reduzir fricções no processo comercial, otimizar operações e ampliar a capacidade de atendimento.\n\nTambém desenvolvo cursos utilizando a plataforma HeyGen, criando vídeos educacionais com avatares digitais e personas clonadas por inteligência artificial."
+    },
+    "dentalis": {
+      "company": "Dentalis & DentalSC",
+      "role": "Desenvolvedor Frontend",
+      "title": "Desenvolvedor Frontend | Projeto Freelance",
+      "type": "Projeto Freelance",
+      "period": "Setembro de 2026 · Projeto de 2 semanas",
+      "location": "Remoto",
+      "description": "Desenvolvimento de duas landing pages institucionais para clínicas odontológicas do mesmo grupo, localizadas em Blumenau e Joinville.\n\nDesenvolvi os projetos utilizando Next.js, TypeScript, React, Tailwind CSS e ShadCN UI, criando interfaces responsivas, modernas e alinhadas à identidade visual de cada clínica.\n\nAs páginas foram estruturadas com foco em SEO técnico, semântica, performance, indexação e conversão de visitantes em potenciais pacientes."
     },
     "vip": {
       "company": "VIP Administradora de Bens e Condomínios",

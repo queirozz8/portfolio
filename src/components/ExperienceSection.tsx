@@ -13,14 +13,29 @@ interface ExperienceItem {
   hasTestimonial?: boolean;
   image?: string;
   logo?: string;
+  showType?: boolean;
+  showLocation?: boolean;
+  projectLinks?: Array<{ label: string; href: string }>;
 }
 
 const experiences: ExperienceItem[] = [
   {
     key: 'engemedical',
-    tags: ['HeyGen', 'AI Video Creation', 'Python GUI Automation', 'Python', 'n8n'],
+    tags: ['Next.js', 'TypeScript', 'NestJS', 'n8n', 'WhatsApp', 'HeyGen', 'AI Automation', 'Full-Stack'],
     logo: '/images/engemedical_logo.png',
     website: 'https://engemedical.com',
+    showType: true,
+    showLocation: true,
+  },
+  {
+    key: 'dentalis',
+    tags: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'ShadCN UI', 'Frontend', 'SEO', 'Landing Pages'],
+    showType: true,
+    showLocation: true,
+    projectLinks: [
+      { label: 'Dentalis', href: 'https://dentalisclinical.com.br' },
+      { label: 'DentalSC', href: 'https://dentalsc.com.br' },
+    ],
   },
   {
     key: 'vip',
@@ -233,11 +248,18 @@ const ExperienceSection = () => {
                     </div>
                   </div>
                   <p className="font-body text-sm font-medium text-foreground/90 mt-1.5 no-select">
-                    {t(`experience.${exp.key}.role`, { defaultValue: t('experience.role_dev') })}
+                    {t(`experience.${exp.key}.title`, {
+                      defaultValue: t(`experience.${exp.key}.role`, { defaultValue: t('experience.role_dev') }),
+                    })}
                   </p>
                   <p className="font-body text-xs text-muted-foreground mt-1 uppercase tracking-wider no-select">
-                    {t(`experience.${exp.key}.period`)} · {exp.key === 'engemedical' ? t(`experience.${exp.key}.type`) : t('experience.remote')}
+                    {t(`experience.${exp.key}.period`)} · {exp.showType ? t(`experience.${exp.key}.type`) : t('experience.remote')}
                   </p>
+                  {exp.showLocation && (
+                    <p className="font-body text-xs text-muted-foreground mt-1 no-select">
+                      {t(`experience.${exp.key}.location`)}
+                    </p>
+                  )}
 
                   <motion.div
                     initial={reducedMotion ? false : { opacity: 0, y: 6 }}
@@ -261,9 +283,31 @@ const ExperienceSection = () => {
                 </div>
 
                 <div className="lg:col-span-8">
-                  <p className="font-body text-sm text-foreground/80 leading-relaxed">
+                  <p className="font-body text-sm text-foreground/80 leading-relaxed whitespace-pre-line">
                     {t(`experience.${exp.key}.description`)}
                   </p>
+
+                  {exp.projectLinks && (
+                    <div className="mt-6">
+                      <p className="font-body text-[10px] uppercase tracking-[0.25em] text-muted-foreground no-select mb-2">
+                        {t('experience.projects')}
+                      </p>
+                      <div className="flex flex-wrap gap-x-4 gap-y-2">
+                        {exp.projectLinks.map((project) => (
+                          <a
+                            key={project.href}
+                            href={project.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-body text-sm text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+                          >
+                            {project.label}
+                            <ExternalLink size={12} className="ml-1 inline-block" aria-hidden="true" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {exp.image && (
                     <motion.div

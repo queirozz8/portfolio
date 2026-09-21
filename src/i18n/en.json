@@ -24,15 +24,25 @@
   },
   "experience": {
     "title": "Experience",
+    "projects": "Projects",
     "remote": "Remote",
     "role_dev": "Software Developer",
     "engemedical": {
       "company": "Engemedical Brasil",
-      "role": "AI Automation Developer",
+      "role": "Full-Stack Developer & AI Automation Developer",
       "type": "Internship",
-      "period": "May 2026 – Present",
+      "period": "May 2026 - Present",
       "location": "Belo Horizonte, Minas Gerais, Brazil · Remote",
-      "description": "Working as an AI Automation Developer Intern at Engemedical, a healthcare consultancy with over 10 years in the market. My main focus is creating AI videos with HeyGen for occupational health and workplace safety courses. I also develop Python GUI automations and automation workflows that support the company's operations."
+      "description": "I work as a Full-Stack Developer and AI Automation Developer Intern at Engemedical Brasil, a healthcare consultancy with more than 10 years of experience.\n\nI contribute to the development and evolution of the company’s new web platform, using Next.js and TypeScript on the frontend and NestJS on the backend. I build new pages, implement features, work on integrations, and continuously contribute to the evolution of the product.\n\nI also develop commercial automation workflows with n8n, including automated SDRs, active prospecting, and WhatsApp-based customer service. These solutions help reduce friction in commercial processes and improve operational efficiency.\n\nIn addition, I create educational courses using HeyGen, producing videos with digital avatars and AI-cloned personas."
+    },
+    "dentalis": {
+      "company": "Dentalis & DentalSC",
+      "role": "Frontend Developer",
+      "title": "Frontend Developer | Freelance Project",
+      "type": "Freelance Project",
+      "period": "September 2026 · 2-week project",
+      "location": "Remote",
+      "description": "Developed two institutional landing pages for dental clinics from the same business group, located in Blumenau and Joinville, Brazil.\n\nBuilt the projects with Next.js, TypeScript, React, Tailwind CSS, and ShadCN UI, creating responsive and modern interfaces aligned with each clinic’s visual identity.\n\nThe pages were structured with a focus on technical SEO, semantic structure, performance, indexing, and converting visitors into potential patients."
     },
     "vip": {
       "company": "VIP Administradora de Bens e Condomínios",
