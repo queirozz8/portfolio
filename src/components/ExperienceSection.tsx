@@ -72,6 +72,7 @@ const experiences: ExperienceItem[] = [
   {
     key: 'frilic',
     tags: ['Backend', 'Node.js', 'TypeScript', 'whatsapp-web.js', 'Automation'],
+    website: 'https://frilic-portfolio.vercel.app',
     logo: '/images/frilic.png',
   },
   {
