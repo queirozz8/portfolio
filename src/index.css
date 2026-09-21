@@ -276,27 +276,6 @@
     transform: translateX(65%);
   }
 
-  .stack-atlas {
-    --stack-x: 50%;
-    --stack-y: 40%;
-    isolation: isolate;
-  }
-
-  .stack-spotlight {
-    display: none;
-    position: absolute;
-    inset: -8%;
-    z-index: 0;
-    pointer-events: none;
-    background: radial-gradient(
-      420px circle at var(--stack-x) var(--stack-y),
-      hsl(var(--accent) / 0.14),
-      hsl(var(--glow) / 0.05) 38%,
-      transparent 68%
-    );
-    opacity: 0.9;
-  }
-
   .stack-panel {
     position: relative;
     background: hsl(var(--card) / 0.5);
@@ -354,12 +333,6 @@
   }
 }
 
-@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .stack-spotlight {
-    display: block;
-  }
-}
-
 @layer utilities {
   .portrait-grayscale {
     filter: grayscale(100%) contrast(1.2);
@@ -384,9 +357,6 @@
     transform: none;
   }
 
-  .stack-spotlight {
-    display: none !important;
-  }
 }
 
 @media (pointer: fine) and (prefers-reduced-motion: no-preference) {

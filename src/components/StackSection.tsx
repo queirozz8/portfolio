@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useState } from 'react';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 const stackData = {
   languages: ['TypeScript', 'JavaScript', 'HTML', 'CSS', 'Python (básico)'],
   frontend: ['Next.js', 'React.js', 'Tailwind CSS', 'ShadCN UI'],
-  backend: ['NestJS', 'Node.js', 'Express.js', 'n8n', 'whatsapp-web.js', 'SQL & NoSQL', 'Supabase', 'Docker', 'cPanel'],
-  tools: ['AI Automation', 'HeyGen', 'WhatsApp', 'SEO', 'AI Agents', 'AI Tools', 'Monorepo', 'Linux', 'Git', 'Inglês (nível B2)'],
+  backend: ['NestJS', 'Node.js', 'Express.js', 'n8n', 'SQL & NoSQL', 'Supabase', 'Docker', 'cPanel'],
+  tools: ['AI Automation', 'AI Agents', 'AI Tools', 'HeyGen', 'Linux', 'Git', 'SEO', 'WhatsApp', 'Monorepo', 'Inglês (nível B2)'],
 };
 
 const allKey = 'all';
@@ -18,7 +18,6 @@ const StackSection = () => {
   const { t } = useTranslation();
   const reducedMotion = useReducedMotion();
   const [activeFilter, setActiveFilter] = useState<string>(allKey);
-  const atlasRef = useRef<HTMLDivElement>(null);
 
   const categories: { key: CategoryKey; items: string[] }[] = [
     { key: 'languages', items: stackData.languages },
@@ -35,47 +34,6 @@ const StackSection = () => {
 
   const techCount = filteredCategories.reduce((sum, c) => sum + c.items.length, 0);
 
-  useEffect(() => {
-    if (reducedMotion || !window.matchMedia('(pointer: fine)').matches) return;
-
-    const atlas = atlasRef.current;
-    if (!atlas) return;
-
-    let frameId = 0;
-    let x = 50;
-    let y = 50;
-
-    const render = () => {
-      atlas.style.setProperty('--stack-x', `${x}%`);
-      atlas.style.setProperty('--stack-y', `${y}%`);
-      frameId = 0;
-    };
-
-    const handlePointerMove = (event: PointerEvent) => {
-      const rect = atlas.getBoundingClientRect();
-      if (rect.width === 0 || rect.height === 0) return;
-
-      x = ((event.clientX - rect.left) / rect.width) * 100;
-      y = ((event.clientY - rect.top) / rect.height) * 100;
-
-      if (!frameId) frameId = requestAnimationFrame(render);
-    };
-
-    const handlePointerLeave = () => {
-      x = 50;
-      y = 40;
-      if (!frameId) frameId = requestAnimationFrame(render);
-    };
-
-    atlas.addEventListener('pointermove', handlePointerMove, { passive: true });
-    atlas.addEventListener('pointerleave', handlePointerLeave);
-    return () => {
-      atlas.removeEventListener('pointermove', handlePointerMove);
-      atlas.removeEventListener('pointerleave', handlePointerLeave);
-      if (frameId) cancelAnimationFrame(frameId);
-    };
-  }, [reducedMotion]);
-
   const panelTransition = reducedMotion
     ? { duration: 0 }
     : { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const };
@@ -87,11 +45,6 @@ const StackSection = () => {
 
   return (
     <section id="stack" className="py-24 relative">
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/3 rounded-full blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-
       <div className="max-w-7xl mx-auto px-6 relative">
         <motion.h2
           initial={reducedMotion ? false : { opacity: 0, y: 20 }}
@@ -133,15 +86,7 @@ const StackSection = () => {
           })}
         </motion.div>
 
-        <div
-          ref={atlasRef}
-          className="stack-atlas relative"
-          style={{ '--stack-x': '50%', '--stack-y': '40%' } as CSSProperties}
-        >
-          {!reducedMotion && (
-            <div className="stack-spotlight" aria-hidden="true" />
-          )}
-
+        <div className="relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeFilter}
