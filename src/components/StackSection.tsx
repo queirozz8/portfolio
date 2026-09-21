@@ -4,10 +4,10 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 const stackData = {
-  languages: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Python (básico)'],
-  frontend: ['Next.js', 'React.js', 'ShadCN UI', 'Tailwind CSS'],
-  backend: ['Express.js', 'Node.js', 'NestJS', 'whatsapp-web.js', 'SQL & NoSQL', 'Supabase', 'n8n', 'Docker', 'cPanel'],
-  tools: ['AI Tools', 'AI Agents', 'AI Automation', 'HeyGen', 'WhatsApp', 'NTFY', 'Monorepo', 'SEO', 'Linux', 'Git', 'Inglês (nível B2)'],
+  languages: ['TypeScript', 'JavaScript', 'HTML', 'CSS', 'Python (básico)'],
+  frontend: ['Next.js', 'React.js', 'Tailwind CSS', 'ShadCN UI'],
+  backend: ['NestJS', 'Node.js', 'Express.js', 'n8n', 'whatsapp-web.js', 'SQL & NoSQL', 'Supabase', 'Docker', 'cPanel'],
+  tools: ['AI Automation', 'HeyGen', 'WhatsApp', 'SEO', 'AI Agents', 'AI Tools', 'Monorepo', 'Linux', 'Git', 'Inglês (nível B2)'],
 };
 
 const allKey = 'all';
