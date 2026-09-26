@@ -261,7 +261,7 @@ const ExperienceSection = () => {
                           <img
                             src={exp.logo}
                             alt={`${t(`experience.${exp.key}.company`)} logo`}
-                            className="experience-logo w-10 h-10 object-contain rounded-md bg-white p-1 border border-border flex-shrink-0"
+                            className={`experience-logo w-10 h-10 object-contain rounded-md p-1 border border-border flex-shrink-0 ${exp.key === 'pompeia' ? 'experience-logo-pompeia bg-black' : 'bg-white'}`}
                           />
                         )}
                     <div className="flex items-start gap-2">
