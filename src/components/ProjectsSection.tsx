@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import React, { useRef, useEffect, useState } from 'react';
 import notoriumImg from '@/assets/notorium.webp';
-import queirozzfmImg from '@/assets/queirozzfm.webp';
 
 interface ProjectItem {
   key: string;
@@ -25,12 +24,6 @@ const projects: ProjectItem[] = [
     ],
     website: 'https://notorium-ai.vercel.app',
     image: notoriumImg,
-  },
-  {
-    key: 'queirozzfm',
-    tags: ['Frontend', 'React', 'TypeScript', 'Tailwind CSS'],
-    website: 'https://queirozz-fm.vercel.app',
-    image: queirozzfmImg,
   },
 ];
 

@@ -72,29 +72,15 @@
     "notorium": {
       "name": "Notorium (SaaS)",
       "type": "Full-Stack Project",
-      "headline": "Your Instagram on autopilot.",
-      "description": "An AI-powered content automation platform for social media — built to plan, generate, and publish posts consistently. Although the project was discontinued, the complete system was built end-to-end (product, integrations, and infrastructure).",
-      "status": "Discontinued",
+      "headline": "Socials handled. More time for the business.",
+      "description": "Notorium creates and publishes social posts for small and midsize businesses. Review is optional on WhatsApp: with no reply in 15 minutes, the post goes live.",
+      "status": "",
       "stack": [
         "Full-Stack",
         "Core: n8n",
         "Frontend: Next.js + ShadCN UI + TypeScript",
         "Backend: Express.js + TypeScript",
         "WhatsApp Server: Express.js + JavaScript"
-      ]
-    },
-    "queirozzfm": {
-      "name": "queirozz.fm",
-      "type": "Frontend Project",
-      "headline": "A Spotify-inspired UI built from scratch.",
-      "description": "A UI/UX-focused project: a Spotify-inspired adaptation built from the ground up with careful layout, state handling, and responsive behavior.",
-      "status": "",
-      "stack": [
-        "Frontend",
-        "React + TypeScript (Vite)",
-        "Tailwind CSS",
-        "Lucide-React",
-        "HTML"
       ]
     }
   },
