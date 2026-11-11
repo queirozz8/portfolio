@@ -3,6 +3,7 @@
     "about": "Sobre",
     "stack": "Stack",
     "experience": "Experiência",
+    "systems": "QS",
     "projects": "Projetos",
     "contact": "Contato"
   },
@@ -96,6 +97,99 @@
         "HTML"
       ]
     }
+  },
+  "systems": {
+    "eyebrow": "Software house",
+    "title": "Queirozz Systems",
+    "taglineLead": "Menos tarefas manuais.",
+    "taglineRest": "Mais espaço para crescer.",
+    "summary": "Software house para pequenas e médias empresas. Automações com IA, sistemas sob medida e sites profissionais para reduzir trabalho manual.",
+    "founder": "Henrique Queiroz, fundador",
+    "languages": "Português, inglês, espanhol, francês, alemão e italiano",
+    "siteCta": "Ver o site",
+    "whatsappCta": "WhatsApp",
+    "instagramCta": "Instagram",
+    "offersLabel": "O que a QS entrega",
+    "offers": {
+      "automation": {
+        "title": "Automações com IA",
+        "description": "Atendimento, tarefas e informações em fluxos com regras claras. A equipe entra quando o pedido sai do escopo."
+      },
+      "systems": {
+        "title": "Sistemas sob medida",
+        "description": "Agendas, cadastros e gestão numa plataforma ajustada aos processos e às regras do negócio."
+      },
+      "websites": {
+        "title": "Sites e landing pages",
+        "description": "Presença com identidade própria, navegação acessível, desempenho e estrutura para buscadores."
+      }
+    },
+    "deliveriesLabel": "Entregas",
+    "deliveries": {
+      "pompeia": {
+        "name": "Pompéia Studio",
+        "meta": "Beleza · site, sistema e IA",
+        "detail": "Site do salão, gestão sob medida que substituiu o Trinks e a SofIA, agente de IA para atendimento e agendamento."
+      },
+      "styllus": {
+        "name": "Barbearia Styllus",
+        "meta": "Beleza · site",
+        "detail": "São Vicente, Jardim Rio Branco. Serviços, clube de assinatura e agendamento pelo WhatsApp."
+      },
+      "jorge": {
+        "name": "Jorge Barbershop",
+        "meta": "Beleza · site",
+        "detail": "Santos, Ponta da Praia. Equipe, serviços e horário marcado pelo WhatsApp."
+      },
+      "diego": {
+        "name": "Diego's Pizzaria",
+        "meta": "Gastronomia · site",
+        "detail": "Santos. Cardápio, forno à lenha e pedido pelo WhatsApp."
+      },
+      "dentalsc": {
+        "name": "DentalSC",
+        "meta": "Saúde · site",
+        "detail": "Identidade própria, apresentação dos serviços e SEO técnico."
+      },
+      "dentalis": {
+        "name": "Dentalis",
+        "meta": "Saúde · site",
+        "detail": "Apresentação da clínica, navegação acessível e SEO técnico."
+      },
+      "vip": {
+        "name": "VIP Administradora",
+        "meta": "Condomínios · site",
+        "detail": "Site institucional, hospedagem via cPanel e redirecionamento de domínios."
+      },
+      "vem": {
+        "name": "Vem com a Gente Viagens",
+        "meta": "Viagens · WhatsApp",
+        "detail": "Chatbot customizável para automatizar suporte e vendas."
+      }
+    },
+    "processLabel": "Como a QS trabalha",
+    "steps": {
+      "understand": {
+        "title": "Entender a operação",
+        "description": "Processos, ferramentas e os pontos que tomam tempo da equipe."
+      },
+      "define": {
+        "title": "Definir a solução",
+        "description": "Escopo, prioridades e o que faz sentido automatizar ou desenvolver."
+      },
+      "build": {
+        "title": "Desenvolver e validar",
+        "description": "A solução é construída e os fluxos são conferidos com o cliente, no ritmo da operação."
+      }
+    },
+    "flowsLabel": "Exemplos de automação",
+    "flows": {
+      "booking": "Atendimento e agenda",
+      "crm": "Leads e CRM",
+      "documents": "Operação e documentos"
+    },
+    "flowsNote": "Cada exemplo depende das regras e dos sistemas da empresa. O site mostra as etapas de cada fluxo.",
+    "flowsCta": "Ver as etapas"
   },
   "workStyle": {
     "title": "Como eu trabalho",

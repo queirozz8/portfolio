@@ -5,6 +5,8 @@ import { Moon, Sun, Menu, X, Terminal } from 'lucide-react'; // ← Terminal adi
 import { motion, AnimatePresence } from 'framer-motion';
 import TerminalModal from '@/components/ui/terminal-modal'; // ← import do novo componente
 
+const NAV_ITEMS = ['about', 'stack', 'experience', 'systems', 'projects', 'contact'] as const;
+
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [isDark, setIsDark] = useState(true);
@@ -95,8 +97,8 @@ const Navbar = () => {
             <span>queiro<span className="accent-gradient-text">zz</span></span>
           </button>
 
-          <div className="hidden md:flex items-center gap-8">
-            {['about', 'stack', 'experience', 'projects', 'contact'].map((item) => (
+          <div className="hidden lg:flex items-center gap-5 xl:gap-8">
+            {NAV_ITEMS.map((item) => (
               <button
                 key={item}
                 onClick={() => scrollTo(item)}
@@ -146,7 +148,7 @@ const Navbar = () => {
             {/* Botão do menu mobile — igual ao original */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 border border-border text-foreground hover:border-accent transition-all duration-200 rounded-md"
+              className="lg:hidden p-2 border border-border text-foreground hover:border-accent transition-all duration-200 rounded-md"
             >
               {mobileOpen ? <X size={16} /> : <Menu size={16} />}
             </button>
@@ -159,10 +161,10 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-background/95 backdrop-blur-md border-b border-border overflow-hidden"
+              className="lg:hidden bg-background/95 backdrop-blur-md border-b border-border overflow-hidden"
             >
               <div className="px-6 py-4 flex flex-col gap-3">
-                {['about', 'stack', 'experience', 'projects', 'contact'].map((item) => (
+                {NAV_ITEMS.map((item) => (
                   <button
                     key={item}
                     onClick={() => scrollTo(item)}
